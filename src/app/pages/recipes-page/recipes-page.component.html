@@ -10,7 +10,7 @@
         <div class="recipe" (click)="goToRecipeId()">
             <div class="recipe__function">
                 <div class="recipe__tags">
-                    <a *ngFor="let tag of Tags" class="recipe__tag" href="#">{{tag.Name}}</a>
+                    <a *ngFor="let tag of recipe.tags" class="recipe__tag" href="#">{{tag.name}}</a>
                 </div>
                 <div class="recipe__relation">
                     <button mat-button class="recipe__button save">
@@ -22,23 +22,22 @@
                 </div>
             </div>
             <a routerLinkActive="active" routerLink="random-recipe" style="text-decoration: none;">
-                <div>{{recipe.RecipeId}}</div>
-                <div class="recipe__title">{{recipe.RecipeName}}</div>
-                <div class="recipe__description">{{recipe.RecipeDescription}}</div>
+                <div class="recipe__title">{{recipe.recipeName}}</div>
+                <div class="recipe__description">{{recipe.recipeDescription}}</div>
             </a>
             <div class="recipe__info">
                 <div class="recipe-info__wrapper">
                     <img src="../../../assets/clock.svg" class="img" alt="часы">
                     <div>
                         <div class="info">Время приготовления</div>
-                        <div class="info-description">{{recipe.CookingTime}} минут</div>
+                        <div class="info-description">{{recipe.cookingTime}} минут</div>
                     </div>
                 </div>
                 <div class="recipe-info__wrapper">
                     <img src="../../../assets/person.svg" class="img" style="width: 59px;" alt="человек">
                     <div>
                         <div class="info">Рецепт на</div>
-                        <div class="info-description">{{recipe.PersonNumber}} персон</div>
+                        <div class="info-description">{{recipe.personNumber}} персон</div>
                     </div>
                 </div>
             </div>
