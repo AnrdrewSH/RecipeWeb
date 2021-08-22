@@ -1,0 +1,63 @@
+.signin-dialog{
+    width: 650px;
+    height: 282px;
+    position: relative;
+}
+
+.main-container__functions
+{
+    margin-left: 35px;
+}
+
+.close-button
+{
+    width: 14px;
+    height: 14px;
+    padding: 0;
+    position: absolute;
+    right: 0;
+    background-image: url("../../../assets/closebutton.svg");
+    min-width: 10px;
+}
+
+.function-button
+{
+    width: 276px;
+    height: 60px;
+    text-decoration: none;
+    background-color: transparent;
+    border-color: #FDB100;
+    font: 600 18px/28px "Montserrat";
+    color: #FDB100;
+    border-radius: 16px;
+    border: 1px solid #FDB100;
+    text-align: center;
+    margin-right: 24px;
+}
+
+.function-button:hover,
+.function-button:active,
+.function-button:focus
+{
+    background-color: #FDB100;
+    color: #fff;
+}
+
+.mat-dialog-title
+{
+    margin-left: 60px;
+    margin-top: 33px;
+    font: bold 24px/30px "Montserrat";
+    color: #25292D;
+}
+
+.dialog__description
+{
+    margin-top: 30px;
+    margin-bottom: 40px;
+    width: 533px;
+    margin-left: 60px;
+    font: normal 18px/28px "Montserrat";
+    font-feature-settings: 'case' on;
+    color: #4A525A;
+}

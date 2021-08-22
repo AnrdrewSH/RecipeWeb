@@ -1,0 +1,42 @@
+<div class="recipe-container">
+    <button (click)="addRecipeDto()">Опубликовать</button>
+    <div class="recipes-list-container">
+        <img class="img" src="../../../assets/addphoto.png" alt="Добавить картинку">
+        <form class="recipe">
+            <input matInput class="input-data-name" type="text" placeholder="Название рецепта" [(ngModel)]="currentRecipeDtoName">
+            <textarea matInput class="input-data-name description" placeholder="Краткое описание рецепта (150 символов)" [(ngModel)]="currentRecipeDtoDescription"></textarea>
+            <input matInput class="input-data-name" type="text" placeholder="Добавить теги" [(ngModel)]="currentTagItemName">
+            <div class="info-container">
+                <div class="info-container__wrapper">
+                    <input matInput class="input-data-name info" type="number" placeholder="Время готовки" [(ngModel)]="currentRecipeDtoCookingTime">
+                    <div class="text">Минут</div>
+                </div>
+                <div class="info-container__wrapper">
+                    <input matInput class="input-data-name info" type="number" placeholder="Порций в блюде" [(ngModel)]="currentRecipeDtoPersonNumber">
+                    <div class="text">Персон</div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="container" style="display: flex; margin: 0 auto; width: 1200px; margin-bottom: 100px;">
+    <div class="ingedient-box" style="width: 380px; margin-right: 30px;">
+        <h3 class="title-ingredient">Ингридиенты</h3>
+        <div class="ingedient-box__wrapper" *ngFor="let ingredientitem of IngredientItems">
+            <form> 
+                <input matInput class="input-data-ingredient" type="text" style="width: 320px;" placeholder="Заголовок для ингридиентов" [(ngModel)]="currentIngredientItemName">
+                <textarea matInput class="input-text-ingredient" type="text" placeholder="Список продуктов для категории" [(ngModel)]="currentIngredientItemProducts"></textarea>
+            </form>
+        </div>
+        <button class="title-step" (click)="addIngredientItem()">Добавить заголовок</button>
+    </div>
+    <div class="step-box">
+        <div class="step-box__wrapper" *ngFor="let stepitem of Steps">
+            <div class="title">Шаг 1</div>
+            <form>
+                <textarea class="input-data-step" placeholder="Описание шага" matInput [(ngModel)]="currentStepItemName" ></textarea>
+            </form>
+        </div>
+        <button class="title-step" (click)="addStepItem()" style="margin-left: 200px;">Добавить шаг</button>
+    </div>
+</div>

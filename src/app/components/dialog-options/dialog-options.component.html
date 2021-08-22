@@ -1,0 +1,13 @@
+<div class="signin-dialog">
+    <button class="close-button" mat-button mat-dialog-close></button>
+    <mat-dialog-content class="dialog__content">
+        <h2 mat-dialog-title>Войдите в профиль</h2>
+        <div class="dialog__description">Добавлять рецепты могут только зарегистрированные пользователи.</div>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <div class="main-container__functions">
+            <button cdkFocusInitial mat-dialog-close (click)="openDialogLogin()" mat-button class="function-button">Войти</button>
+            <button mat-button [mat-dialog-close]="true" (click)="openDialogSignUp()" class="function-button">Регистрация</button>
+        </div>
+    </mat-dialog-actions>
+</div>

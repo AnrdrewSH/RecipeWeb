@@ -1,0 +1,17 @@
+<div class="login-container">
+    <button class="close-button" mat-button mat-dialog-close></button>
+    <mat-dialog-content>
+        <h2 class="title">Войти</h2>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <form class="search-container__search" action="#" method="post">
+            <input type="text" class="search-container__input" placeholder="Логин">
+            <input type="text" class="search-container__input" placeholder="Пароль">
+            <div class="main-container__functions">
+                <button cdkFocusInitial mat-dialog-close mat-button class="function-button">Войти</button>
+                <button mat-button [mat-dialog-close]="true" class="function-button">Отмена</button>
+            </div>
+        </form>
+        <button mat-button mat-dialog-close (click)="openDialogSignUp()" class="no-account">У меня еще нет аккаунта</button>
+    </mat-dialog-actions>
+</div>

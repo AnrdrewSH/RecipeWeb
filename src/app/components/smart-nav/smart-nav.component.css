@@ -1,0 +1,43 @@
+.nav-section
+{
+    margin: 0 auto;
+    width: 1200px;
+}
+
+.nav-section__tags
+{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+}
+
+.tags
+{
+    width: 278px;
+    text-decoration: none;
+    background: #ffffff;
+    color: #25292D;
+    box-shadow: 0px 16px 72px rgb(34 39 47 / 5%);
+    border-radius: 24px;
+    cursor: pointer;
+    transition: all ease-in-out 250ms;
+    margin-right: 30px;
+    padding: 24px;
+}
+
+.tags:last-child
+{
+    margin-right: 0;
+}
+
+.tags__title
+{
+    color: #25292D;
+    margin: 24px 0 12px 0;
+}
+
+.tags__text
+{
+    font: normal 18px/30px "Montserrat";
+    color: #4a525a;
+}

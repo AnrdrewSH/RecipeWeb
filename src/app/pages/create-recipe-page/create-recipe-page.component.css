@@ -1,0 +1,52 @@
+.recipe-container
+{
+    margin: 0 auto;
+    width: 1200px;
+}
+
+.recipe-container__title
+{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+}
+
+.title
+{
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 42px;
+    line-height: 62px;
+    color: #25292d;
+    margin: 0;
+}
+
+.function-button
+{
+    cursor: pointer;
+    width: 278px;
+    height: 60px;
+    text-decoration: none;
+    border-color: #FDB100;
+    font: 600 18px/28px "Montserrat";
+    color: #FDB100;
+    border-radius: 16px;
+    border: 1px solid #FDB100;
+    text-align: center;
+    background-color: #FDB100;
+    color: #fff;
+    position: relative;
+    padding-left: 35px;
+    margin-top: 20px;
+}
+
+.back-button
+{
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    color: #FDB100;
+}

@@ -1,0 +1,87 @@
+.login-container
+{
+    width: 650px;
+    height: 425px;
+    position: relative;
+}
+
+.close-button
+{
+    width: 14px;
+    height: 14px;
+    padding: 0;
+    position: absolute;
+    right: 0;
+    background-image: url("../../../assets/closebutton.svg");
+    min-width: 10px;
+}
+
+.search-container__search
+{
+    margin: 40px 0 40px 37px;
+}
+
+.mat-dialog-actions
+{
+    text-align: center;
+}
+
+.no-account
+{
+    font: 600 18px/28px "Montserrat";
+    color: #FDB100;
+    padding: 0;
+    width: 242px;
+    margin-left: 210px;
+    text-decoration-line: underline;
+    text-decoration-style: dashed;
+}
+
+.title
+{
+    margin-left: 60px;
+    margin-top: 33px;
+    margin-bottom: 0;
+    font: bold 24px/30px "Montserrat";
+    color: #25292D;
+}
+
+.search-container__input
+{
+    display: block;
+    height: 50px;
+    width: 580px;
+    border-radius: 16px;
+    background: #FFFFFF;
+    box-shadow: 0px 8px 42px rgba(34, 39, 47, 0.04);
+    font: 400 18px/22px "Montserrat";
+    border-style: none;
+    outline: none;
+    padding-left: 32px;
+    margin-right: 16px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(145, 150, 161, 0.4);
+}
+
+.function-button
+{
+    width: 276px;
+    height: 60px;
+    text-decoration: none;
+    background-color: transparent;
+    border-color: #FDB100;
+    font: 600 18px/28px "Montserrat";
+    color: #FDB100;
+    border-radius: 16px;
+    border: 1px solid #FDB100;
+    text-align: center;
+    margin-right: 24px;
+}
+
+.function-button:hover,
+.function-button:active,
+.function-button:focus
+{
+    background-color: #FDB100;
+    color: #fff;
+}

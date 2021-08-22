@@ -1,0 +1,12 @@
+<div class="page-wrapper">
+    <div class="page-wrapper__title">Поиск рецепта</div>
+    <div class="search-container">
+        <div class="search-container__search">
+            <input type="text" class="search-container__input" placeholder="Название Блюда....">
+            <input type="submit" class="search-container__submit" value="Поиск">
+        </div>
+        <div class="search-container__nav">
+            <a *ngFor="let tag of Tags" class="nav-container__link" href="#"> {{tag.name}}</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+.nav-container
+{
+    margin: 0 auto;
+    padding: 48px 0;
+    width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-container__link
+{
+
+    cursor: pointer;
+    margin-left: 5px;
+    margin-right: 20px;
+    width: 100px;
+    display: inline-block;
+    font: 400 18px/22px "Montserrat";
+    text-decoration: none;
+    color: #9196a1;
+    transition: .15s all;
+}
+
+.nav-container__link_recipes
+{
+    text-decoration: none;
+    font: bold 24px/29px "Montserrat";
+    color: #fdb100;
+    margin: 0;
+    margin-right: 40px;
+}
+
+.nav-container__login
+{
+    font: 600 18px/22px "Montserrat";
+    color: #FDB100;
+    position: relative;
+    cursor: pointer;
+}
+
+.nav-container__link:hover
+{
+    font-weight: 600;
+    color: #3a3c41;
+    transition: .15s all;
+}

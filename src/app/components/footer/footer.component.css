@@ -1,0 +1,34 @@
+.footer
+{
+    background: #FBF9F4;
+    height: 125px;
+}
+
+.footer__wrapper
+{
+    margin: 0 auto;
+    width: 1440px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer__items
+{
+    margin-top: 37px;
+    margin-left: 120px;
+    font: 700 32px/39px "Montserrat";
+}
+
+.footer__items:last-child
+{
+    margin: 45px 119px 0 0;
+    font: 500 20px/24px "Montserrat";
+}
+.nav-container__link_recipes
+{
+    text-decoration: none;
+    font: bold 24px/29px "Montserrat";
+    color: #fdb100;
+    /* margin: 0; */
+    margin-right: 40px;
+}
