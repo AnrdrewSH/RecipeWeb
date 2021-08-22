@@ -4,10 +4,10 @@
             <button mat-button class="back-button" routerLinkActive="active" routerLink="/recipes">Назад</button>
             <h1 class="title">Редактировать</h1>
         </div>
-        <button mat-button class="function-button">Редактировать</button>
+        <button mat-button (click)="deleteRecipe()" class="function-button">Удалить</button>
+        <!-- <button mat-button (click)="updateRecipe()" class="function-button">Редактировать</button> -->
     </div>
     <div class="recipe-container-form">
-        <!-- <button (click)="deleteRecipe()">Удалить</button> -->
         <div class="recipes-list-container" *ngFor="let recipe of recipeDtosById">
             <img class="img" src="../../../assets/addphoto.png" alt="Добавить картинку">
             <form class="recipe">

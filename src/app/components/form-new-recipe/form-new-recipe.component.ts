@@ -91,7 +91,6 @@ export class FormNewRecipeComponent implements OnInit {
   }
 
   async addRecipe(recipeDto: RecipeDto): Promise<void>{
-    console.log(recipeDto);
     await this._http.post<void>('/api/Recipe', recipeDto).toPromise()
   }
 
@@ -119,7 +118,8 @@ export class FormNewRecipeComponent implements OnInit {
       console.log( this.IngredientItems );
   }
 
-  async addRecipeDto() {
+  async addRecipeDto()
+  {
     this.Steps.splice(0, 1);
     this.IngredientItems.splice(0, 1);
     this.addTagItem();

@@ -12,33 +12,25 @@ class StepItem {
 }
 
 class RecipeDto {
-  public RecipeId: number;
-  public RecipeName: string;
-  public RecipeDescription: string;
-  public PersonNumber: number;
-  public CookingTime: number;
-  public Steps: StepItem[];
-  public Tags: TagItem[];
-  public IngredientItems: IngredientItem[];
+  public recipeId: number;
+  public recipeName: string;
+  public recipeDescription: string;
+  public personNumber: number;
+  public cookingTime: number;
+  public steps: StepItem[];
+  public tags: TagItem[];
+  public ingredientItems: IngredientItem[];
 
-  constructor(
-    RecipeId: number,
-    RecipeName: string,
-    RecipeDescription: string,
-    PersonNumber: number,
-    CookingTime: number,
-    Steps: StepItem[],
-    Tags:TagItem[],
-    IngredientItems: IngredientItem[])
-    {
-    this.RecipeId = RecipeId;
-    this.RecipeName = RecipeName;
-    this.RecipeDescription = RecipeDescription;
-    this.PersonNumber = PersonNumber;
-    this.CookingTime = CookingTime;
-    this.Steps = Steps;
-    this.Tags = Tags;
-    this.IngredientItems = IngredientItems;
+  constructor(other: RecipeDto)
+  {
+    this.recipeId = other.recipeId;
+    this.recipeName = other.recipeName;
+    this.recipeDescription = other.recipeDescription;
+    this.personNumber = other.personNumber;
+    this.cookingTime = other.cookingTime;
+    this.steps = other.steps;
+    this.tags = other.tags;
+    this.ingredientItems = other.ingredientItems;
   }
 }
 
@@ -113,6 +105,11 @@ export class ChangeRecipePageComponent implements OnInit {
     this.recipeDtosById.push(recipeDtoById);
   }
   
+  // async updateRecipe(recipe: RecipeDto)
+  // {
+  //   await this._http.put(`/api/Recipe/${recipe.recipeId}`, recipe).toPromise();
+  // }
+
   async deleteRecipe()
   {
     await this._http.delete<RecipeDto>('/api/Recipe/'+this.currentRecipeDtoId).toPromise();
