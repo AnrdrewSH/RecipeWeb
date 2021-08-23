@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { Observable } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 
 class TagItem {
   public name: string;
@@ -64,35 +66,24 @@ export class RecipesPageComponent implements OnInit {
 
   private _http: HttpClient;
 
-  constructor(http: HttpClient, private router: Router) {
+  constructor(http: HttpClient, private router: Router, private route: ActivatedRoute) {
+    this.route.queryParams.subscribe(params => {
+    this.recipeId = params['id']});
     this._http = http;
   }
 
   async ngOnInit(): Promise<void> {
     this.recipesDtos = await this._http.get<RecipeDto[]>('/api/Recipe').toPromise();
+    console.log(this.recipesDtos);
   }
 
   openNewRecipe(){
     this.router.navigate(['/new_recipe']);
   }
 
-  goToRecipeId()
+  goToRecipeId(recipeId: number)
   {
-    this.router.navigate(['/change_recipe/', {id: this.recipeId}])
-    // {
-    //   queryParams:
-    //   {
-    //     'recipeName': Recipe.RecipeName, 
-    //     'recipeDescription': Recipe.RecipeDescription,
-    //     'personNumber': Recipe.PersonNumber,
-    //     'cookingTime': Recipe.CookingTime,
-    //     'Tags': Recipe.Tags,   
-    //     'Steps': Recipe.Steps, 
-    //     'IngredientItems': Recipe.IngredientItems
-    //   },
-    // })  
-    // , Recipe.RecipeId
-    // Recipe: RecipeDto
+    this.router.navigate(['/change_recipe/:id', {id: recipeId}])
   }
 
 }

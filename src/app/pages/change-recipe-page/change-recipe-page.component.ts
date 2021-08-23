@@ -1,15 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ActivatedRoute} from '@angular/router';
-import {Subscription} from 'rxjs';
-
-class StepItem {
-  public StepDescription: string;
-
-  constructor(StepDescription: string) {
-    this.StepDescription = StepDescription;
-  }
-}
+import { Router, ActivatedRoute } from '@angular/router';
 
 class RecipeDto {
   public recipeId: number;
@@ -35,20 +26,28 @@ class RecipeDto {
 }
 
 class TagItem {
-  public Name: string;
+  public name: string;
   
-  constructor(Name: string) {
-    this.Name = Name;
+  constructor(name: string) {
+    this.name = name;
+  }
+}
+
+class StepItem {
+  public stepDescription: string;
+
+  constructor(stepDescription: string) {
+    this.stepDescription = stepDescription;
   }
 }
 
 class IngredientItem {
-  public IngredientItemName: string;
-  public Products: string;
+  public ingredientItemName: string;
+  public products: string;
 
-  constructor(IngredientItemName: string, Products: string) {
-    this.IngredientItemName = IngredientItemName;
-    this.Products = Products;
+  constructor(ingredientItemName: string, products: string) {
+    this.ingredientItemName = ingredientItemName;
+    this.products = products;
   }
 }
 
@@ -61,47 +60,38 @@ var recipeDtoById: RecipeDto;
 })
 export class ChangeRecipePageComponent implements OnInit {
 
-  currentStepItemName = '';
-  Steps: StepItem[] = [];
-  
-  currentTagItemName = '';
-  Tags: TagItem[] = [];
-
-  currentIngredientItemName = '';
-  currentIngredientItemProducts = '';
-  IngredientItems: IngredientItem[] = [];
-
-  currentRecipeDtoId = 0;
-  currentRecipeDtoName = '';
-  currentRecipeDtoDescription = '';
-  currentRecipeDtoPersonNumber = 0;
-  currentRecipeDtoCookingTime = 0;
-
   recipeDtosById: RecipeDto[] = [];
-
-  // private routeSubscription: Subscription;
-  // private querySubscription: Subscription;
 
   private _http: HttpClient;
 
-  constructor(http: HttpClient, private route: ActivatedRoute) {
+  constructor(http: HttpClient, private route: ActivatedRoute, private router: Router)
+  {
     this._http = http;
-    // this.routeSubscription = route.params.subscribe(params=>this.currentRecipeDtoId=params['recipeId']);
-    // this.querySubscription = route.queryParams.subscribe(
-    //     (queryParam: number) => {
-    //         this.currentRecipeDtoId = queryParam['recipeId'];
-    //     }
-    // );
   }
   
   async ngOnInit(): Promise<void>
   {
-    this.route.queryParams.subscribe(params => {
-      this.currentRecipeDtoId = params['id'];
-    });
+    this.currentRecipeDtoId = Number(this.route.snapshot.paramMap.get('id'));
+    console.log(this.currentRecipeDtoId);
     recipeDtoById = await this._http.get<RecipeDto>('/api/Recipe/'+this.currentRecipeDtoId).toPromise()
     this.recipeDtosById.push(recipeDtoById);
   }
+  
+  currentStepItemName = '';
+  Steps: StepItem[] = recipeDtoById.steps;
+  
+  currentTagItemName = '';
+  Tags: TagItem[] = recipeDtoById.tags;
+
+  currentIngredientItemName = '';
+  currentIngredientItemProducts = '';
+  IngredientItems: IngredientItem[] = recipeDtoById.ingredientItems;
+
+  currentRecipeDtoId = recipeDtoById.recipeId;
+  currentRecipeDtoName = recipeDtoById.recipeName;
+  currentRecipeDtoDescription = recipeDtoById.recipeDescription;
+  currentRecipeDtoPersonNumber = recipeDtoById.personNumber;
+  currentRecipeDtoCookingTime = recipeDtoById.cookingTime;
   
   // async updateRecipe(recipe: RecipeDto)
   // {

@@ -15,8 +15,6 @@ import { SmartNavComponent } from './components/smart-nav/smart-nav.component';
 import { DialogLoginComponent } from './components/dialog-login/dialog-login.component';
 import { DialogSignupComponent } from './components/dialog-signup/dialog-signup.component';
 import { CreateRecipePageComponent } from './pages/create-recipe-page/create-recipe-page.component';
-import { FormNewRecipeComponent } from './components/form-new-recipe/form-new-recipe.component';
-import { RecipeComponent } from './components/recipe/recipe.component';
 import { IngredientInputComponent } from './components/ingredient-input/ingredient-input.component';
 import { StepInputComponent } from './components/step-input/step-input.component';
 import { DialogOptionsComponent } from './components/dialog-options/dialog-options.component';
@@ -25,7 +23,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { ChangeRecipePageComponent } from './pages/change-recipe-page/change-recipe-page.component';
-import { FormChangeRecipeComponent } from './components/form-change-recipe/form-change-recipe.component';
 
 @NgModule({
   declarations: [
@@ -39,13 +36,10 @@ import { FormChangeRecipeComponent } from './components/form-change-recipe/form-
     DialogLoginComponent,
     DialogSignupComponent,
     CreateRecipePageComponent,
-    FormNewRecipeComponent,
-    RecipeComponent,
     IngredientInputComponent,
     StepInputComponent,
     DialogOptionsComponent,
     ChangeRecipePageComponent,
-    FormChangeRecipeComponent
   ],
   imports: [
     BrowserModule,

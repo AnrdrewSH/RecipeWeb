@@ -32,8 +32,8 @@
             <h3 class="title-ingredient">Ингридиенты</h3>
             <div class="ingedient-box__wrapper" *ngFor="let ingredientitem of IngredientItems">
                 <form> 
-                    <input matInput class="input-data-ingredient" type="text" style="width: 320px;" placeholder="Заголовок для ингридиентов" [(ngModel)]="currentIngredientItemName">
-                    <textarea matInput class="input-text-ingredient" type="text" placeholder="Список продуктов для категории" [(ngModel)]="currentIngredientItemProducts"></textarea>
+                    <input matInput class="input-data-ingredient" type="text" style="width: 320px;" placeholder="Заголовок для ингридиентов" [(ngModel)]="ingredientitem.ingredientItemName">
+                    <textarea matInput class="input-text-ingredient" type="text" placeholder="Список продуктов для категории" [(ngModel)]="ingredientitem.products"></textarea>
                 </form>
             </div>
             <button class="title-step" (click)="addIngredientItem()">Добавить заголовок</button>
@@ -42,11 +42,10 @@
             <div class="step-box__wrapper" *ngFor="let stepitem of Steps">
                 <div class="title-form">Шаг 1</div>
                 <form>
-                    <textarea class="input-data-step" placeholder="Описание шага" matInput [(ngModel)]="currentStepItemName" ></textarea>
+                    <textarea class="input-data-step" placeholder="Описание шага" matInput [(ngModel)]="stepitem.stepDescription" ></textarea>
                 </form>
             </div>
             <button class="title-step" (click)="addStepItem()" style="margin-left: 200px;">Добавить шаг</button>
         </div>
     </div>
-    <h1>{{currentRecipeDtoName}}</h1>
 </div>

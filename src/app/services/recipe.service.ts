@@ -11,6 +11,6 @@ export class RecipeService {
     this._http = http;
   }
   async getData(): Promise<any> {
-    return this._http.get<any[]>('/api/Recipes').toPromise();
+    return this._http.get<any[]>('/api/Recipe').toPromise();
   }
 }

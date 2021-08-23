@@ -7,7 +7,7 @@
 <div class="container">
     <div class="recipes-list-container" *ngFor="let recipe of recipesDtos">       
         <img class="img" src="../../../assets/strawberry.png" alt="Клубника">
-        <div class="recipe" (click)="goToRecipeId()">
+        <div class="recipe" (click)="goToRecipeId(recipe.recipeId)">
             <div class="recipe__function">
                 <div class="recipe__tags">
                     <a *ngFor="let tag of recipe.tags" class="recipe__tag" href="#">{{tag.name}}</a>
