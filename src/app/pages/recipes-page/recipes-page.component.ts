@@ -60,6 +60,7 @@ export class RecipesPageComponent implements OnInit {
 
   recipesDtos: RecipeDto[] = [];
   tags: TagItem[] = [];
+  recipeId: number = 15;
 
   private _http: HttpClient;
 
@@ -77,7 +78,7 @@ export class RecipesPageComponent implements OnInit {
 
   goToRecipeId()
   {
-    this.router.navigate(['/change_recipe'])
+    this.router.navigate(['/change_recipe/', {id: this.recipeId}])
     // {
     //   queryParams:
     //   {

@@ -81,26 +81,24 @@ export class ChangeRecipePageComponent implements OnInit {
 
   // private routeSubscription: Subscription;
   // private querySubscription: Subscription;
+
   private _http: HttpClient;
 
-  constructor(http: HttpClient) {
+  constructor(http: HttpClient, private route: ActivatedRoute) {
     this._http = http;
     // this.routeSubscription = route.params.subscribe(params=>this.currentRecipeDtoId=params['recipeId']);
     // this.querySubscription = route.queryParams.subscribe(
-    //     (queryParam: any) => {
-    //         this.currentRecipeDtoName = queryParam['recipeName'];
-    //         this.currentRecipeDtoDescription = queryParam['recipeDescription'];
-    //         this.currentRecipeDtoPersonNumber = queryParam['personNumber'];
-    //         this.currentRecipeDtoCookingTime = queryParam['cookingTime'];
-    //         this.Tags = queryParam['Tags'];
-    //         this.Steps = queryParam['Steps'];
-    //         this.IngredientItems = queryParam['IngredientItems'];
+    //     (queryParam: number) => {
+    //         this.currentRecipeDtoId = queryParam['recipeId'];
     //     }
     // );
   }
   
   async ngOnInit(): Promise<void>
   {
+    this.route.queryParams.subscribe(params => {
+      this.currentRecipeDtoId = params['id'];
+    });
     recipeDtoById = await this._http.get<RecipeDto>('/api/Recipe/'+this.currentRecipeDtoId).toPromise()
     this.recipeDtosById.push(recipeDtoById);
   }
