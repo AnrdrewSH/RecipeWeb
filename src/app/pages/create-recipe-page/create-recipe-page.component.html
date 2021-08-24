@@ -4,10 +4,9 @@
             <button mat-button class="back-button" routerLinkActive="active" routerLink="/recipes">Назад</button>
             <h1 class="title">Добавить новый рецепт</h1>
         </div>
-        <button mat-button class="function-button">Опубликовать</button>
+        <button mat-button (click)="addRecipeDto()" class="function-button">Опубликовать</button>
     </div>
     <div class="recipe-container-form">
-        <button (click)="addRecipeDto()">Опубликовать</button>
         <div class="recipes-list-container">
             <img class="img" src="../../../assets/addphoto.png" alt="Добавить картинку">
             <form class="recipe">
@@ -40,8 +39,8 @@
         </div>
         <div class="step-box">
             <div class="step-box__wrapper" *ngFor="let stepitem of Steps">
-                <div class="title-form">Шаг 1</div>
                 <form>
+                    <div class="title-form">Шаг {{Steps.length}}</div>
                     <textarea class="input-data-step" placeholder="Описание шага" matInput [(ngModel)]="currentStepItemName" ></textarea>
                 </form>
             </div>

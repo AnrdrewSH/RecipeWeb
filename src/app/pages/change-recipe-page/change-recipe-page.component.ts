@@ -73,25 +73,29 @@ export class ChangeRecipePageComponent implements OnInit {
   {
     this.currentRecipeDtoId = Number(this.route.snapshot.paramMap.get('id'));
     console.log(this.currentRecipeDtoId);
-    recipeDtoById = await this._http.get<RecipeDto>('/api/Recipe/'+this.currentRecipeDtoId).toPromise()
+    recipeDtoById = await this._http.get<RecipeDto>('/api/Recipe/'+this.currentRecipeDtoId).toPromise();
+    console.log(recipeDtoById);
     this.recipeDtosById.push(recipeDtoById);
+    this.Steps = recipeDtoById.steps;
+    this.Tags =  recipeDtoById.tags;
+    this.IngredientItems = recipeDtoById.ingredientItems;
   }
   
   currentStepItemName = '';
-  Steps: StepItem[] = recipeDtoById.steps;
+  Steps: StepItem[] = [];
   
   currentTagItemName = '';
-  Tags: TagItem[] = recipeDtoById.tags;
+  Tags: TagItem[] = [];
 
   currentIngredientItemName = '';
   currentIngredientItemProducts = '';
-  IngredientItems: IngredientItem[] = recipeDtoById.ingredientItems;
+  IngredientItems: IngredientItem[] = [];
 
-  currentRecipeDtoId = recipeDtoById.recipeId;
-  currentRecipeDtoName = recipeDtoById.recipeName;
-  currentRecipeDtoDescription = recipeDtoById.recipeDescription;
-  currentRecipeDtoPersonNumber = recipeDtoById.personNumber;
-  currentRecipeDtoCookingTime = recipeDtoById.cookingTime;
+  currentRecipeDtoId = 0;
+  currentRecipeDtoName = "";
+  currentRecipeDtoDescription = "";
+  currentRecipeDtoPersonNumber = 1;
+  currentRecipeDtoCookingTime = 1;
   
   // async updateRecipe(recipe: RecipeDto)
   // {

@@ -72,7 +72,6 @@ export class CreateRecipePageComponent implements OnInit {
   currentIngredientItemName = '';
   currentIngredientItemProducts = '';
   IngredientItems: IngredientItem[] = [];
-  //input параметры
   currentRecipeDtoName = '';
   currentRecipeDtoDescription = '';
   currentRecipeDtoPersonNumber = 0;
@@ -99,7 +98,6 @@ export class CreateRecipePageComponent implements OnInit {
     
       this.Steps.push( newStep );
       this.currentStepItemName = '';
-      console.log( this.Steps );
   }
 
   async addTagItem() {
@@ -115,7 +113,6 @@ export class CreateRecipePageComponent implements OnInit {
       this.IngredientItems.push( newIngredientItem );
       this.currentIngredientItemName = '';
       this.currentIngredientItemProducts = '';
-      console.log( this.IngredientItems );
   }
 
   async addRecipeDto()
