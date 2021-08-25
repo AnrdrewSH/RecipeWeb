@@ -254,3 +254,21 @@
     color: #25292D80;
     resize: none;
 }
+
+.delete-button
+{
+    cursor: pointer;
+    width: 60px;
+    height: 60px;
+    text-decoration: none;
+    border-color: #9196A1;    
+    font: 600 18px/28px "Montserrat";
+    color: #9196A1;
+    border-radius: 16px;
+    border: 1px solid #9196A1;
+    text-align: center;
+    color: #fff;
+    position: relative;
+    margin-top: 20px;
+    margin-left: 18px;
+}

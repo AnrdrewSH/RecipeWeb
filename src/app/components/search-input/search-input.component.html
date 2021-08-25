@@ -6,7 +6,7 @@
             <input type="submit" class="search-container__submit" value="Поиск">
         </div>
         <div class="search-container__nav">
-            <a *ngFor="let tag of Tags" class="nav-container__link" href="#"> {{tag.name}}</a>
+            <a *ngFor="let tag of MockTags" class="nav-container__link" href="#" click()="SaveTagName(tag.name)"> {{tag.name}}</a>
         </div>
     </div>
 </div>

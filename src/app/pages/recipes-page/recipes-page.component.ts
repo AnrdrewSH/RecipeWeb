@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { Observable } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
 
 class TagItem {
   public name: string;
@@ -60,6 +58,21 @@ class RecipeDto {
 })
 export class RecipesPageComponent implements OnInit {
 
+  MockTags: Tag[] = [
+    { name: 'мясо'},
+    { name: 'деликатесы'},
+    { name: 'пироги'},
+    { name: 'рыба'},
+  ]
+
+  Categories: Category[] = [
+    { name: 'Простые блюда', photo: 'icon1.svg'},
+    { name: 'Детское', photo: 'icon2.svg'},
+    { name: 'От шеф поваров', photo: 'icon3.svg'},
+    { name: 'На праздник', photo: 'icon4.svg' }
+  ];
+
+  currentTagItemName = '';
   recipesDtos: RecipeDto[] = [];
   tags: TagItem[] = [];
   recipeId: number = 15;
@@ -74,16 +87,49 @@ export class RecipesPageComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     this.recipesDtos = await this._http.get<RecipeDto[]>('/api/Recipe').toPromise();
-    console.log(this.recipesDtos);
   }
+
+  recipesDtosForSearch = this.recipesDtos;
 
   openNewRecipe(){
     this.router.navigate(['/new_recipe']);
   }
 
-  goToRecipeId(recipeId: number)
+  goToPageByRecipeId(recipeId: number)
   {
     this.router.navigate(['/change_recipe/:id', {id: recipeId}])
   }
 
+  async SaveAndGetTags(nameoftag: string)
+  {
+    console.log(nameoftag);
+    let i = 0;
+    let j = 0;
+    let counter = 0;
+    this.currentTagItemName = nameoftag;
+
+    for (i; i < this.recipesDtos.length; i++)
+    {
+      for (j; j < this.tags.length; j++)
+      {
+        if (this.recipesDtos[i].tags[j].name == this.currentTagItemName)
+        {
+          counter++;
+        }       
+      }
+      if (counter == 0)
+      {
+        delete this.recipesDtos[i];
+      }
+    }
+  }
+  
+}
+export interface Tag {
+  name: string;
+}
+
+export interface Category {
+  name: string;
+  photo: string;
 }

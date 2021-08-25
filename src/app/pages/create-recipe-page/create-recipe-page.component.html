@@ -39,10 +39,11 @@
         </div>
         <div class="step-box">
             <div class="step-box__wrapper" *ngFor="let stepitem of Steps">
-                <form>
-                    <div class="title-form">Шаг {{Steps.length}}</div>
-                    <textarea class="input-data-step" placeholder="Описание шага" matInput [(ngModel)]="currentStepItemName" ></textarea>
-                </form>
+                <div class="title-form">Шаг {{stepitem.StepNumber}}</div>     
+                <textarea
+                    class="input-data-step"
+                    placeholder="Описание шага"
+                    matInput [(ngModel)]="stepitem.stepDescription"></textarea>
             </div>
             <button class="title-step" (click)="addStepItem()" style="margin-left: 200px;">Добавить шаг</button>
         </div>

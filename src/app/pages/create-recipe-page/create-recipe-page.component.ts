@@ -1,14 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-class StepItem {
-  public StepDescription: string;
-
-  constructor(StepDescription: string) {
-    this.StepDescription = StepDescription;
-  }
-}
-
 class RecipeDto {
   public RecipeId: number | undefined;
   public RecipeName: string;
@@ -38,6 +30,16 @@ class RecipeDto {
   }
 }
 
+class StepItem {
+  public stepDescription: string;
+  public StepNumber: number;
+
+  constructor(stepDescription: string, StepNumber: number) {
+    this.stepDescription = stepDescription;
+    this.StepNumber = StepNumber;
+  }
+}
+
 class TagItem {
   public Name: string;
   
@@ -62,12 +64,15 @@ class IngredientItem {
   styleUrls: ['./create-recipe-page.component.css']
 })
 export class CreateRecipePageComponent implements OnInit {
-
+  
+  currentStepItemNumber = 1;
   currentStepItemName = '';
   Steps: StepItem[] = [];
   
+  space = ' ';
   currentTagItemName = '';
   Tags: TagItem[] = [];
+  StringTags: string[] =[];
 
   currentIngredientItemName = '';
   currentIngredientItemProducts = '';
@@ -93,17 +98,29 @@ export class CreateRecipePageComponent implements OnInit {
     await this._http.post<void>('/api/Recipe', recipeDto).toPromise()
   }
 
-  async addStepItem() {
-      let newStep: StepItem = new StepItem(this.currentStepItemName);
-    
-      this.Steps.push( newStep );
-      this.currentStepItemName = '';
+  async deleteFormStep()
+  {
+    this.Steps.pop();
   }
 
-  async addTagItem() {
-    let newTag: TagItem = new TagItem(this.currentTagItemName);
+  async addStepItem() {
+    this.currentStepItemNumber = this.Steps.length + 1;
+    let newStep: StepItem = new StepItem(this.currentStepItemName, this.currentStepItemNumber);
 
-    this.Tags.push( newTag );
+    this.Steps.push( newStep );
+    this.currentStepItemName = '';
+}
+
+  async addTagItem() {
+    let i = 0;
+    this.StringTags = this.currentTagItemName.split(this.space);
+    while (i < this.StringTags.length) { 
+      this.currentTagItemName = this.StringTags[i];
+      let newTag: TagItem = new TagItem(this.currentTagItemName);
+      this.Tags.push( newTag );
+      i++;
+    }
+    
     this.currentTagItemName = '';
   }
 

@@ -7,11 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchInputComponent implements OnInit {
 
-  Tags: Tag[] = [
-    { name: 'Мясо'},
-    { name: 'Деликатесы'},
-    { name: 'Пироги'},
-    { name: 'Рыба'},
+  currentTagItemName = '';
+  
+  MockTags: Tag[] = [
+    { name: 'мясо'},
+    { name: 'деликатесы'},
+    { name: 'пироги'},
+    { name: 'рыба'},
   ]
 
   constructor() { }
@@ -19,6 +21,10 @@ export class SearchInputComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  SaveTagName(name: string)
+  {
+    this.currentTagItemName = name;
+  }
 }
 
 export interface Tag {

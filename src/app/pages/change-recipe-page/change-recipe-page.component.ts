@@ -12,16 +12,24 @@ class RecipeDto {
   public tags: TagItem[];
   public ingredientItems: IngredientItem[];
 
-  constructor(other: RecipeDto)
+  constructor(
+    recipeId: number,
+    recipeName: string,
+    recipeDescription: string,
+    personNumber: number,
+    cookingTime: number,
+    steps: StepItem[],
+    tags:TagItem[],
+    ingredientItems: IngredientItem[])
   {
-    this.recipeId = other.recipeId;
-    this.recipeName = other.recipeName;
-    this.recipeDescription = other.recipeDescription;
-    this.personNumber = other.personNumber;
-    this.cookingTime = other.cookingTime;
-    this.steps = other.steps;
-    this.tags = other.tags;
-    this.ingredientItems = other.ingredientItems;
+    this.recipeId = recipeId;
+    this.recipeName = recipeName;
+    this.recipeDescription = recipeDescription;
+    this.personNumber = personNumber;
+    this.cookingTime = cookingTime;
+    this.steps = steps;
+    this.tags = tags;
+    this.ingredientItems = ingredientItems;
   }
 }
 
@@ -35,9 +43,11 @@ class TagItem {
 
 class StepItem {
   public stepDescription: string;
+  public StepNumber: number;
 
-  constructor(stepDescription: string) {
+  constructor(stepDescription: string, StepNumber: number) {
     this.stepDescription = stepDescription;
+    this.StepNumber = StepNumber;
   }
 }
 
@@ -69,18 +79,12 @@ export class ChangeRecipePageComponent implements OnInit {
     this._http = http;
   }
   
-  async ngOnInit(): Promise<void>
-  {
-    this.currentRecipeDtoId = Number(this.route.snapshot.paramMap.get('id'));
-    console.log(this.currentRecipeDtoId);
-    recipeDtoById = await this._http.get<RecipeDto>('/api/Recipe/'+this.currentRecipeDtoId).toPromise();
-    console.log(recipeDtoById);
-    this.recipeDtosById.push(recipeDtoById);
-    this.Steps = recipeDtoById.steps;
-    this.Tags =  recipeDtoById.tags;
-    this.IngredientItems = recipeDtoById.ingredientItems;
-  }
-  
+  currentRecipeDtoName = '';
+  currentRecipeDtoDescription = '';
+  currentRecipeDtoPersonNumber = 1;
+  currentRecipeDtoCookingTime = 1;
+
+  currentStepItemNumber = 1;
   currentStepItemName = '';
   Steps: StepItem[] = [];
   
@@ -92,24 +96,36 @@ export class ChangeRecipePageComponent implements OnInit {
   IngredientItems: IngredientItem[] = [];
 
   currentRecipeDtoId = 0;
-  currentRecipeDtoName = "";
-  currentRecipeDtoDescription = "";
-  currentRecipeDtoPersonNumber = 1;
-  currentRecipeDtoCookingTime = 1;
+
+  async ngOnInit(): Promise<void>
+  {
+    this.currentRecipeDtoId = Number(this.route.snapshot.paramMap.get('id'));
+    recipeDtoById = await this._http.get<RecipeDto>('/api/Recipe/' + this.currentRecipeDtoId).toPromise();
+    this.recipeDtosById.push(recipeDtoById);
+    this.currentRecipeDtoName = recipeDtoById.recipeName;
+    this.currentRecipeDtoDescription = recipeDtoById.recipeDescription;
+    this.currentRecipeDtoPersonNumber = recipeDtoById.personNumber;
+    this.currentRecipeDtoCookingTime = recipeDtoById.cookingTime;
+    this.Steps = recipeDtoById.steps;
+    this.Tags = recipeDtoById.tags;
+    this.IngredientItems = recipeDtoById.ingredientItems;
+  }
   
-  // async updateRecipe(recipe: RecipeDto)
-  // {
-  //   await this._http.put(`/api/Recipe/${recipe.recipeId}`, recipe).toPromise();
-  // }
+  async updateRecipe(recipe: RecipeDto)
+  {
+    await this._http.put(`/api/Recipe/${recipe.recipeId}`, recipe).toPromise();
+    console.log(recipe);
+  }
 
   async deleteRecipe()
   {
-    await this._http.delete<RecipeDto>('/api/Recipe/'+this.currentRecipeDtoId).toPromise();
+    await this._http.delete<RecipeDto>('/api/Recipe/' + this.currentRecipeDtoId).toPromise();
   }
 
   async addStepItem() {
-      let newStep: StepItem = new StepItem(this.currentStepItemName);
-    
+      this.currentStepItemNumber = this.Steps.length + 1;
+      let newStep: StepItem = new StepItem(this.currentStepItemName, this.currentStepItemNumber);
+
       this.Steps.push( newStep );
       this.currentStepItemName = '';
   }
@@ -128,6 +144,22 @@ export class ChangeRecipePageComponent implements OnInit {
       this.IngredientItems.push( newIngredientItem );
       this.currentIngredientItemName = '';
       this.currentIngredientItemProducts = '';
+  }
+
+  async ChangeRecipeDto()
+  {
+    this.addTagItem();
+    let newRecipeDto: RecipeDto = new RecipeDto(
+    this.currentRecipeDtoId,
+    this.currentRecipeDtoName,
+    this.currentRecipeDtoDescription,
+    this.currentRecipeDtoPersonNumber,
+    this.currentRecipeDtoCookingTime,
+    this.Steps,
+    this.Tags,
+    this.IngredientItems);
+    
+    this.updateRecipe(newRecipeDto)
   }
 
 }

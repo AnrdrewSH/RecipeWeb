@@ -16,7 +16,6 @@ import { DialogLoginComponent } from './components/dialog-login/dialog-login.com
 import { DialogSignupComponent } from './components/dialog-signup/dialog-signup.component';
 import { CreateRecipePageComponent } from './pages/create-recipe-page/create-recipe-page.component';
 import { IngredientInputComponent } from './components/ingredient-input/ingredient-input.component';
-import { StepInputComponent } from './components/step-input/step-input.component';
 import { DialogOptionsComponent } from './components/dialog-options/dialog-options.component';
 import { RecipeService } from './services/recipe.service';
 import { HttpClientModule } from '@angular/common/http';
@@ -37,7 +36,6 @@ import { ChangeRecipePageComponent } from './pages/change-recipe-page/change-rec
     DialogSignupComponent,
     CreateRecipePageComponent,
     IngredientInputComponent,
-    StepInputComponent,
     DialogOptionsComponent,
     ChangeRecipePageComponent,
   ],
