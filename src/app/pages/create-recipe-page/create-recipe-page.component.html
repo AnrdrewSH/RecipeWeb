@@ -1,7 +1,7 @@
 <div class="recipe-container">
     <div class="recipe-container__title">
         <div class="title__wrapper">
-            <button mat-button class="back-button" routerLinkActive="active" routerLink="/recipes">Назад</button>
+            <button mat-button class="back-button" routerLinkActive="active" routerLink="/">Назад</button>
             <h1 class="title">Добавить новый рецепт</h1>
         </div>
         <button mat-button (click)="addRecipeDto()" class="function-button">Опубликовать</button>
@@ -39,11 +39,12 @@
         </div>
         <div class="step-box">
             <div class="step-box__wrapper" *ngFor="let stepitem of Steps">
+                <button class="close-button" (click)="deleteStep()" ></button>
                 <div class="title-form">Шаг {{stepitem.StepNumber}}</div>     
                 <textarea
                     class="input-data-step"
                     placeholder="Описание шага"
-                    matInput [(ngModel)]="stepitem.stepDescription"></textarea>
+                    matInput [(ngModel)]="currentStepItemName"></textarea>
             </div>
             <button class="title-step" (click)="addStepItem()" style="margin-left: 200px;">Добавить шаг</button>
         </div>

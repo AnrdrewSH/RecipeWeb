@@ -87,9 +87,11 @@ export class ChangeRecipePageComponent implements OnInit {
   currentStepItemNumber = 1;
   currentStepItemName = '';
   Steps: StepItem[] = [];
-  
+
+  space = ' ';
   currentTagItemName = '';
   Tags: TagItem[] = [];
+  StringTags: string[] =[];
 
   currentIngredientItemName = '';
   currentIngredientItemProducts = '';
@@ -109,6 +111,10 @@ export class ChangeRecipePageComponent implements OnInit {
     this.Steps = recipeDtoById.steps;
     this.Tags = recipeDtoById.tags;
     this.IngredientItems = recipeDtoById.ingredientItems;
+    for (let i = 0; i < this.Steps.length; i++)
+    {
+      this.Steps[i].StepNumber = i + 1;
+    }
   }
   
   async updateRecipe(recipe: RecipeDto)
@@ -120,6 +126,11 @@ export class ChangeRecipePageComponent implements OnInit {
   async deleteRecipe()
   {
     await this._http.delete<RecipeDto>('/api/Recipe/' + this.currentRecipeDtoId).toPromise();
+    this.router.navigate(['/'])
+  }
+
+  deleteStep(){
+    this.Steps.pop();
   }
 
   async addStepItem() {
@@ -131,9 +142,16 @@ export class ChangeRecipePageComponent implements OnInit {
   }
 
   async addTagItem() {
-    let newTag: TagItem = new TagItem(this.currentTagItemName);
-
-    this.Tags.push( newTag );
+    this.Tags = [];
+    let i = 0;
+    this.StringTags = this.currentTagItemName.split(this.space);
+    while (i < this.StringTags.length) { 
+      this.currentTagItemName = this.StringTags[i];
+      let newTag: TagItem = new TagItem(this.currentTagItemName);
+      this.Tags.push( newTag );
+      i++;
+    }
+    
     this.currentTagItemName = '';
   }
 

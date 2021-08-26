@@ -4,7 +4,8 @@
 </div>
 <div class="nav-section">
     <div class="nav-section__tags">
-        <a class="tags" *ngFor="let category of Categories" (click)="SaveAndGetTags(category.name)">
+        <a class="tags" *ngFor="let category of Categories">
+            <!-- (click)="SaveAndGetTags(category.name)" -->
             <img src="../../assets/{{category.photo}}" alt="#">
             <h3 class="tags__title">{{category.name}}</h3>
         </a>

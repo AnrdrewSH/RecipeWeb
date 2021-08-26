@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router, ActivatedRoute } from '@angular/router';
 
 class RecipeDto {
   public RecipeId: number | undefined;
@@ -86,7 +87,7 @@ export class CreateRecipePageComponent implements OnInit {
 
   private _http: HttpClient;
 
-  constructor(http: HttpClient) {
+  constructor(http: HttpClient, private router: Router) {
     this._http = http;
   }
 
@@ -103,13 +104,17 @@ export class CreateRecipePageComponent implements OnInit {
     this.Steps.pop();
   }
 
+  deleteStep(){
+    this.Steps.pop();
+  }
+
   async addStepItem() {
     this.currentStepItemNumber = this.Steps.length + 1;
     let newStep: StepItem = new StepItem(this.currentStepItemName, this.currentStepItemNumber);
 
     this.Steps.push( newStep );
     this.currentStepItemName = '';
-}
+  }
 
   async addTagItem() {
     let i = 0;
@@ -155,6 +160,7 @@ export class CreateRecipePageComponent implements OnInit {
     this.Steps = [];
     this.Tags = [];
     this.IngredientItems = [];
+    this.router.navigate(['/'])
   }
 
 }

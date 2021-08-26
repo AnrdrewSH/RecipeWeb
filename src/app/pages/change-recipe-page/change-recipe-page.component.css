@@ -207,6 +207,7 @@
     border-radius: 24px;
     margin-bottom: 62px;
     padding: 50px 70px;
+    position: relative;
 }
 
 .title
@@ -271,4 +272,18 @@
     position: relative;
     margin-top: 20px;
     margin-left: 18px;
+}
+
+.close-button
+{
+    width: 14px;
+    height: 14px;
+    padding: 0;
+    position: absolute;
+    background-image: url("../../../assets/closebutton.svg");
+    min-width: 10px;
+    border: none;
+    background-color: #fff;
+    right: 75px;
+    top: 55px;
 }

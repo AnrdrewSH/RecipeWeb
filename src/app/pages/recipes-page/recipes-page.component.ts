@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 class TagItem {
   public name: string;
   
-  constructor(other: TagItem) {
-    this.name = other.name;
+  constructor(name: string) {
+    this.name = name;
   }
 }
 
@@ -74,8 +74,9 @@ export class RecipesPageComponent implements OnInit {
 
   currentTagItemName = '';
   recipesDtos: RecipeDto[] = [];
-  tags: TagItem[] = [];
-  recipeId: number = 15;
+  Tags: TagItem[] = [];
+  TagsForCounter: number = 0;
+  recipeId: number = 0;
 
   private _http: HttpClient;
 
@@ -86,10 +87,9 @@ export class RecipesPageComponent implements OnInit {
   }
 
   async ngOnInit(): Promise<void> {
+    let i = 0;
     this.recipesDtos = await this._http.get<RecipeDto[]>('/api/Recipe').toPromise();
   }
-
-  recipesDtosForSearch = this.recipesDtos;
 
   openNewRecipe(){
     this.router.navigate(['/new_recipe']);
@@ -100,31 +100,21 @@ export class RecipesPageComponent implements OnInit {
     this.router.navigate(['/change_recipe/:id', {id: recipeId}])
   }
 
-  async SaveAndGetTags(nameoftag: string)
-  {
-    console.log(nameoftag);
-    let i = 0;
-    let j = 0;
-    let counter = 0;
-    this.currentTagItemName = nameoftag;
-
-    for (i; i < this.recipesDtos.length; i++)
-    {
-      for (j; j < this.tags.length; j++)
-      {
-        if (this.recipesDtos[i].tags[j].name == this.currentTagItemName)
-        {
-          counter++;
-        }       
-      }
-      if (counter == 0)
-      {
-        delete this.recipesDtos[i];
-      }
-    }
-  }
-  
+  // async SaveAndGetTags(nameoftag: string)
+  // {
+  //   let params = new HttpParams();
+  //   params = params.append(nameoftag, nameoftag);
+  //   this.recipesDtos = await this._http.get<RecipeDto[]>('/api/Recipe/nameoftag').toPromise();
+  //   for (let i = 0; i < this.recipesDtos.length; i++)
+  //   {
+  //     if (this.recipesDtos[i].tags.length == 0)
+  //     {
+  //       delete this.recipesDtos[i];
+  //     }
+  //   }
+  // }
 }
+
 export interface Tag {
   name: string;
 }
