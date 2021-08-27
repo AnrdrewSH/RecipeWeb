@@ -30,6 +30,15 @@
     margin-top: 20px;
 }
 
+.function-button::before
+{
+    content: url("../../../assets/Vector.svg");
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    left: 39px;
+}
+
 .back-button
 {
     font-family: Montserrat;
@@ -270,8 +279,16 @@
     text-align: center;
     color: #fff;
     position: relative;
-    margin-top: 20px;
-    margin-left: 18px;
+}
+
+.delete-button::before
+{
+    content: url("../../../assets/TrashBin.svg");
+    position: absolute;
+    width: 14px;
+    height: 18px;
+    left: 24px;
+    top: 15px;
 }
 
 .close-button

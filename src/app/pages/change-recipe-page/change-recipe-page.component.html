@@ -4,8 +4,10 @@
             <button mat-button class="back-button" routerLinkActive="active" routerLink="/">Назад</button>
             <h1 class="title">Редактировать</h1>
         </div>
-        <button mat-button (click)="deleteRecipe()" class="delete-button"></button>
-        <button mat-button (click)="ChangeRecipeDto()" class="function-button">Редактировать</button>
+        <div>
+            <button mat-button (click)="deleteRecipe()" class="delete-button"></button>
+            <button mat-button (click)="ChangeRecipeDto()" class="function-button">Редактировать</button>
+        </div>
     </div>
     <div class="recipe-container-form">
         <div class="recipes-list-container" *ngFor="let recipe of recipeDtosById">

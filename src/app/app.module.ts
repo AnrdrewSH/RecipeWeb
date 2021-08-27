@@ -10,12 +10,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { RecipesPageComponent } from '../app/pages/recipes-page/recipes-page.component';
-import { SearchInputComponent } from './components/search-input/search-input.component';
-import { SmartNavComponent } from './components/smart-nav/smart-nav.component';
 import { DialogLoginComponent } from './components/dialog-login/dialog-login.component';
 import { DialogSignupComponent } from './components/dialog-signup/dialog-signup.component';
 import { CreateRecipePageComponent } from './pages/create-recipe-page/create-recipe-page.component';
-import { IngredientInputComponent } from './components/ingredient-input/ingredient-input.component';
 import { DialogOptionsComponent } from './components/dialog-options/dialog-options.component';
 import { RecipeService } from './services/recipe.service';
 import { HttpClientModule } from '@angular/common/http';
@@ -30,12 +27,9 @@ import { ChangeRecipePageComponent } from './pages/change-recipe-page/change-rec
     HeaderComponent,
     FooterComponent,
     RecipesPageComponent,
-    SearchInputComponent,
-    SmartNavComponent,
     DialogLoginComponent,
     DialogSignupComponent,
     CreateRecipePageComponent,
-    IngredientInputComponent,
     DialogOptionsComponent,
     ChangeRecipePageComponent,
   ],

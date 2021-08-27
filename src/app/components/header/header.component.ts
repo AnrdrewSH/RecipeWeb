@@ -13,11 +13,8 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  openMainPage(){
-    this.router.navigate(['']);
-  }
   openRecipes() {
-    this.router.navigate(['/recipes']);
+    this.router.navigate(['/']);
   }
 
 }

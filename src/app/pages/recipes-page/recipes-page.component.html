@@ -4,8 +4,7 @@
 </div>
 <div class="nav-section">
     <div class="nav-section__tags">
-        <a class="tags" *ngFor="let category of Categories">
-            <!-- (click)="SaveAndGetTags(category.name)" -->
+        <a class="tags" *ngFor="let category of Categories" (click)="GetRecipesByTag(category.name)">            
             <img src="../../assets/{{category.photo}}" alt="#">
             <h3 class="tags__title">{{category.name}}</h3>
         </a>
@@ -15,8 +14,8 @@
     <div class="page-wrapper__title">Поиск рецепта</div>
     <div class="search-container">
         <div class="search-container__search">
-            <input type="text" class="search-container__input" placeholder="Название Блюда....">
-            <input type="submit" class="search-container__submit" value="Поиск">
+            <input type="text" class="search-container__input" placeholder="Название Блюда...." [(ngModel)]="searchValue">
+            <button mat-button class="search-container__submit" (click)="GetRecipesByName()">Поиск</button>
         </div>
         <div class="search-container__nav">
             <a *ngFor="let tag of MockTags" class="nav-container__link">{{tag.name}}</a>
@@ -25,19 +24,19 @@
 </div>
 <div class="container">
     <div class="recipes-list-container" *ngFor="let recipe of recipesDtos">       
-        <img class="img" src="../../../assets/strawberry.png" alt="Клубника">
-        <div class="recipe" (click)="goToPageByRecipeId(recipe.recipeId)">
+        <img class="img" src="../../../assets/strawberry.png" alt="Клубника" (click)="goToPageByRecipeId(recipe.recipeId)">
+        <div class="recipe">
             <div class="recipe__function">
                 <div class="recipe__tags">
                     <a *ngFor="let tag of recipe.tags" class="recipe__tag" href="#">{{tag.name}}</a>
                 </div>
                 <div class="recipe__relation">
-                    <button mat-button class="recipe__button save">
+                    <button mat-button class="recipe__button save" (click)="updateRecipeForStars(recipe.recipeId)">
                         <img src="../../../assets/fav.svg" style="margin-top: -3px; margin-right: 10px;" alt="fav">
-                        10</button>
-                    <button mat-button class="recipe__button like">
+                        {{recipe.stars}}</button>
+                    <button mat-button class="recipe__button like" (click)="updateRecipeForLike(recipe.recipeId)">
                         <img src="../../../assets/like.svg" style="margin-right: 10px;" alt="like">
-                        8</button>
+                        {{recipe.likes}}</button>
                 </div>
             </div>
             <a style="text-decoration: none;">

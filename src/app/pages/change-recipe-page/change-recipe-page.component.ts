@@ -120,7 +120,7 @@ export class ChangeRecipePageComponent implements OnInit {
   async updateRecipe(recipe: RecipeDto)
   {
     await this._http.put(`/api/Recipe/${recipe.recipeId}`, recipe).toPromise();
-    console.log(recipe);
+    this.router.navigate(['/'])
   }
 
   async deleteRecipe()

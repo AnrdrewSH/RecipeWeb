@@ -10,7 +10,5 @@ export class RecipeService {
   constructor(public http: HttpClient) { 
     this._http = http;
   }
-  async getData(): Promise<any> {
-    return this._http.get<any[]>('/api/Recipe').toPromise();
-  }
+  
 }
