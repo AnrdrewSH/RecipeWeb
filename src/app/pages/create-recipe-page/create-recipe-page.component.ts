@@ -11,6 +11,7 @@ class RecipeDto {
   public Steps: StepItem[];
   public Tags: TagItem[];
   public IngredientItems: IngredientItem[];
+  
 
   constructor(
     RecipeName: string,
@@ -51,11 +52,19 @@ class TagItem {
 
 class IngredientItem {
   public IngredientItemName: string;
-  public Products: string;
+  public Products: ProductItem[];
 
-  constructor(IngredientItemName: string, Products: string) {
+  constructor(IngredientItemName: string, Products: ProductItem[]) {
     this.IngredientItemName = IngredientItemName;
     this.Products = Products;
+  }
+}
+
+class ProductItem {
+  public Name: string;
+
+  constructor(Name: string) {
+    this.Name = Name;
   }
 }
 
@@ -76,8 +85,11 @@ export class CreateRecipePageComponent implements OnInit {
   Tags: TagItem[] = [];
   StringTags: string[] =[];
 
+  enter = '\n'
+  StringProducts: string[] = []
   currentIngredientItemName = '';
-  currentIngredientItemProducts = '';
+  currentProductItemName = '';
+  Products: ProductItem[] = [];
   IngredientItems: IngredientItem[] = [];
 
   currentRecipeDtoName = '';
@@ -132,9 +144,17 @@ export class CreateRecipePageComponent implements OnInit {
   }
 
   async addIngredientItem() {
-      let newIngredientItem: IngredientItem = new IngredientItem(this.currentIngredientItemName, this.currentIngredientItemProducts);
-
-      this.IngredientItems.push( newIngredientItem );
+    let i = 0;
+    this.Products = [];
+    this.StringProducts = this.currentProductItemName.split(this.enter);
+    while (i < this.StringProducts.length) { 
+      this.currentProductItemName = this.StringProducts[i];
+      let newProductItem: ProductItem = new ProductItem(this.currentProductItemName);
+      this.Products.push( newProductItem );
+      i++;
+    }
+    let newIngredientItem: IngredientItem = new IngredientItem(this.currentIngredientItemName, this.Products)
+    this.IngredientItems.push(newIngredientItem)
   }
 
   async addRecipeDto()
@@ -148,6 +168,7 @@ export class CreateRecipePageComponent implements OnInit {
       {
         this.Steps.splice(0, 1);
         this.IngredientItems.splice(0, 1);
+        console.log(this.IngredientItems);
         this.addTagItem();
         let newRecipeDto: RecipeDto = new RecipeDto(
         this.currentRecipeDtoName,
@@ -175,13 +196,3 @@ export class CreateRecipePageComponent implements OnInit {
      
   }
 }
-// async addIngredientItem() {
-//     let i = 0;
-//     this.StringProducts = this.currentIngredientItemProducts.split(this.enter);
-//     while (i < this.StringProducts.length) { 
-//       this.currentIngredientItemProducts = this.StringProducts[i];
-//       let newIngredientItem: IngredientItem = new IngredientItem(this.currentIngredientItemName, this.currentIngredientItemProducts);
-//       this.IngredientItems.push( newIngredientItem );
-//       i++;
-//     }
-//   }

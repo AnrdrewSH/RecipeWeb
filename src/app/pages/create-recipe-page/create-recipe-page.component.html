@@ -38,7 +38,7 @@
             <div class="ingedient-box__wrapper" *ngFor="let ingredientitem of IngredientItems">
                 <form> 
                     <input class="input-data-ingredient" type="text" style="width: 320px;" placeholder="Заголовок для ингридиентов" [(ngModel)]="currentIngredientItemName">
-                    <textarea class="input-text-ingredient" type="text" placeholder="Список продуктов для категории" [(ngModel)]="currentIngredientItemProducts"></textarea>
+                    <textarea class="input-text-ingredient" type="text" placeholder="Список продуктов для категории" [(ngModel)]="currentProductItemName"></textarea>
                 </form>
             </div>
             <button class="title-step" (click)="addIngredientItem()">Добавить заголовок</button>
