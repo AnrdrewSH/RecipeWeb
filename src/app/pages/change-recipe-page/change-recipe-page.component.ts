@@ -1,73 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
-
-class RecipeDto {
-  public recipeId: number;
-  public recipeName: string;
-  public recipeDescription: string;
-  public personNumber: number;
-  public cookingTime: number;
-  public steps: StepItem[];
-  public tags: TagItem[];
-  public ingredientItems: IngredientItem[];
-
-  constructor(
-    recipeId: number,
-    recipeName: string,
-    recipeDescription: string,
-    personNumber: number,
-    cookingTime: number,
-    steps: StepItem[],
-    tags:TagItem[],
-    ingredientItems: IngredientItem[])
-  {
-    this.recipeId = recipeId;
-    this.recipeName = recipeName;
-    this.recipeDescription = recipeDescription;
-    this.personNumber = personNumber;
-    this.cookingTime = cookingTime;
-    this.steps = steps;
-    this.tags = tags;
-    this.ingredientItems = ingredientItems;
-  }
-}
-
-class TagItem {
-  public name: string;
-  
-  constructor(name: string) {
-    this.name = name;
-  }
-}
-
-class StepItem {
-  public stepDescription: string;
-  public StepNumber: number;
-
-  constructor(stepDescription: string, StepNumber: number) {
-    this.stepDescription = stepDescription;
-    this.StepNumber = StepNumber;
-  }
-}
-
-class IngredientItem {
-  public ingredientItemName: string;
-  public products: ProductItem[];
-
-  constructor(ingredientItemName: string, products: ProductItem[]) {
-    this.ingredientItemName = ingredientItemName;
-    this.products = products;
-  }
-}
-
-class ProductItem {
-  public name: string;
-
-  constructor(name: string) {
-    this.name = name;
-  }
-}
+import { RecipeDto } from 'src/app/interfaces/RecipeDto';
+import { StepItem } from 'src/app/interfaces/StepItem';
+import { TagItem } from 'src/app/interfaces/TagItem';
+import { IngredientItem } from 'src/app/interfaces/IngredientItem';
+import { ProductItem } from 'src/app/interfaces/ProductItem';
 
 var recipeDtoById: RecipeDto;
 
@@ -91,14 +29,16 @@ export class ChangeRecipePageComponent implements OnInit {
   currentRecipeDtoDescription = '';
   currentRecipeDtoPersonNumber = 1;
   currentRecipeDtoCookingTime = 1;
+  currentRecipeDtoLikes = 0;
+  currentRecipeDtoStars = 0;
 
   currentStepItemNumber = 1;
   currentStepItemName = '';
-  Steps: StepItem[] = [];
+  steps: StepItem[] = [];
 
   space = ' ';
   currentTagItemName = '';
-  Tags: TagItem[] = [];
+  tags: TagItem[] = [];
   StringTags: string[] =[];
 
   enter = '\n'
@@ -106,7 +46,7 @@ export class ChangeRecipePageComponent implements OnInit {
   currentIngredientItemName = '';
   currentProductItemName = '';
   Products: ProductItem[] = [];
-  IngredientItems: IngredientItem[] = [];
+  ingredientItems: IngredientItem[] = [];
 
   currentRecipeDtoId = 0;
 
@@ -119,12 +59,12 @@ export class ChangeRecipePageComponent implements OnInit {
     this.currentRecipeDtoDescription = recipeDtoById.recipeDescription;
     this.currentRecipeDtoPersonNumber = recipeDtoById.personNumber;
     this.currentRecipeDtoCookingTime = recipeDtoById.cookingTime;
-    this.Steps = recipeDtoById.steps;
-    this.Tags = recipeDtoById.tags;
-    this.IngredientItems = recipeDtoById.ingredientItems;
-    for (let i = 0; i < this.Steps.length; i++)
+    this.steps = recipeDtoById.steps;
+    this.tags = recipeDtoById.tags;
+    this.ingredientItems = recipeDtoById.ingredientItems;
+    for (let i = 0; i < this.steps.length; i++)
     {
-      this.Steps[i].StepNumber = i + 1;
+      this.steps[i].StepNumber = i + 1;
     }
   }
   
@@ -141,25 +81,25 @@ export class ChangeRecipePageComponent implements OnInit {
   }
 
   deleteStep(){
-    this.Steps.pop();
+    this.steps.pop();
   }
 
   async addStepItem() {
-      this.currentStepItemNumber = this.Steps.length + 1;
+      this.currentStepItemNumber = this.steps.length + 1;
       let newStep: StepItem = new StepItem(this.currentStepItemName, this.currentStepItemNumber);
 
-      this.Steps.push( newStep );
+      this.steps.push( newStep );
       this.currentStepItemName = '';
   }
 
   async addTagItem() {
-    this.Tags = [];
+    this.tags = [];
     let i = 0;
     this.StringTags = this.currentTagItemName.split(this.space);
     while (i < this.StringTags.length) { 
       this.currentTagItemName = this.StringTags[i];
       let newTag: TagItem = new TagItem(this.currentTagItemName);
-      this.Tags.push( newTag );
+      this.tags.push( newTag );
       i++;
     }
     
@@ -176,7 +116,7 @@ export class ChangeRecipePageComponent implements OnInit {
       i++;
     }
     let newIngredientItem: IngredientItem = new IngredientItem(this.currentIngredientItemName, this.Products)
-    this.IngredientItems.push(newIngredientItem)
+    this.ingredientItems.push(newIngredientItem)
   }
 
   async ChangeRecipeDto()
@@ -188,9 +128,11 @@ export class ChangeRecipePageComponent implements OnInit {
     this.currentRecipeDtoDescription,
     this.currentRecipeDtoPersonNumber,
     this.currentRecipeDtoCookingTime,
-    this.Steps,
-    this.Tags,
-    this.IngredientItems);
+    this.currentRecipeDtoLikes,
+    this.currentRecipeDtoStars,
+    this.steps,
+    this.tags,
+    this.ingredientItems);
     
     this.updateRecipe(newRecipeDto)
   }

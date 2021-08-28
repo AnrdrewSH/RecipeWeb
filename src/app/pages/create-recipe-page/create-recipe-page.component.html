@@ -35,7 +35,7 @@
     <div class="container" style="display: flex; margin: 0 auto; width: 1200px; margin-bottom: 100px;">
         <div class="ingedient-box" style="width: 380px; margin-right: 30px;">
             <h3 class="title-ingredient">Ингридиенты</h3>
-            <div class="ingedient-box__wrapper" *ngFor="let ingredientitem of IngredientItems">
+            <div class="ingedient-box__wrapper" *ngFor="let ingredientitem of ingredientItems">
                 <form> 
                     <input class="input-data-ingredient" type="text" style="width: 320px;" placeholder="Заголовок для ингридиентов" [(ngModel)]="currentIngredientItemName">
                     <textarea class="input-text-ingredient" type="text" placeholder="Список продуктов для категории" [(ngModel)]="currentProductItemName"></textarea>
@@ -44,7 +44,7 @@
             <button class="title-step" (click)="addIngredientItem()">Добавить заголовок</button>
         </div>
         <div class="step-box">
-            <div class="step-box__wrapper" *ngFor="let stepitem of Steps">
+            <div class="step-box__wrapper" *ngFor="let stepitem of steps">
                 <button class="close-button" (click)="deleteStep()" ></button>
                 <div class="title-form">Шаг {{stepitem.StepNumber}}</div>     
                 <textarea

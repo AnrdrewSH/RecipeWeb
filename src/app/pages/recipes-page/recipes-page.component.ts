@@ -1,69 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Router, ActivatedRoute} from '@angular/router';
-
-class TagItem {
-  public name: string;
-  
-  constructor(name: string) {
-    this.name = name;
-  }
-}
-
-class StepItem {
-  public StepDescription: string;
-
-  constructor(StepDescription: string) {
-    this.StepDescription = StepDescription;
-  }
-}
-
-class IngredientItem {
-  public IngredientItemName: string;
-  public Products: string;
-
-  constructor(IngredientItemName: string, Products: string) {
-    this.IngredientItemName = IngredientItemName;
-    this.Products = Products;
-  }
-}
-
-class RecipeDto {
-  public recipeId: number;
-  public recipeName: string;
-  public recipeDescription: string;
-  public personNumber: number;
-  public cookingTime: number;
-  public likes: number;
-  public stars: number;
-  public steps: StepItem[];
-  public tags: TagItem[];
-  public ingredientItems: IngredientItem[];
-
-  constructor(
-    recipeId: number,
-    recipeName: string,
-    recipeDescription: string,
-    personNumber: number,
-    cookingTime: number,
-    likes: number,
-    stars: number,
-    steps: StepItem[],
-    tags:TagItem[],
-    ingredientItems: IngredientItem[])
-  {
-    this.recipeId = recipeId;
-    this.recipeName = recipeName;
-    this.recipeDescription = recipeDescription;
-    this.personNumber = personNumber;
-    this.cookingTime = cookingTime;
-    this.likes = likes
-    this.stars = stars
-    this.steps = steps;
-    this.tags = tags;
-    this.ingredientItems = ingredientItems;
-  }
-}
+import { RecipeDto } from 'src/app/interfaces/RecipeDto';
+import { StepItem } from 'src/app/interfaces/StepItem';
+import { TagItem } from 'src/app/interfaces/TagItem';
+import { IngredientItem } from 'src/app/interfaces/IngredientItem';
+import { ProductItem } from 'src/app/interfaces/ProductItem';
 
 var recipeDtoById: RecipeDto;
 
@@ -101,16 +43,16 @@ export class RecipesPageComponent implements OnInit {
 
   currentStepItemNumber = 1;
   currentStepItemName = '';
-  Steps: StepItem[] = [];
+  steps: StepItem[] = [];
 
   space = ' ';
   currentTagItemName = '';
-  Tags: TagItem[] = [];
+  tags: TagItem[] = [];
   StringTags: string[] =[];
 
   currentIngredientItemName = '';
   currentIngredientItemProducts = '';
-  IngredientItems: IngredientItem[] = [];
+  ingredientItems: IngredientItem[] = [];
   
   recipesDtos: RecipeDto[] = [];
   TagsForCounter: number = 0;
@@ -154,9 +96,9 @@ export class RecipesPageComponent implements OnInit {
     this.currentRecipeDtoCookingTime = recipeDtoById.cookingTime;
     this.currentRecipeDtoLikes = recipeDtoById.likes;
     this.currentRecipeDtoStars = recipeDtoById.stars;
-    this.Steps = recipeDtoById.steps;
-    this.Tags = recipeDtoById.tags;
-    this.IngredientItems = recipeDtoById.ingredientItems;
+    this.steps = recipeDtoById.steps;
+    this.tags = recipeDtoById.tags;
+    this.ingredientItems = recipeDtoById.ingredientItems;
 
     if (this.currentRecipeDtoLikes == 0) this.currentRecipeDtoLikes++, this.isLiked = true;
     else this.currentRecipeDtoLikes--, this.isLiked = false;
@@ -169,9 +111,9 @@ export class RecipesPageComponent implements OnInit {
       this.currentRecipeDtoCookingTime,
       this.currentRecipeDtoLikes,
       this.currentRecipeDtoStars,
-      this.Steps,
-      this.Tags,
-      this.IngredientItems);
+      this.steps,
+      this.tags,
+      this.ingredientItems);
 
     await this._http.put(`/api/Recipe/${recipeId}`, newRecipeDto).toPromise();
     this.recipesDtos = await this._http.get<RecipeDto[]>('/api/Recipe').toPromise();
@@ -188,9 +130,9 @@ export class RecipesPageComponent implements OnInit {
     this.currentRecipeDtoCookingTime = recipeDtoById.cookingTime;
     this.currentRecipeDtoLikes = recipeDtoById.likes;
     this.currentRecipeDtoStars = recipeDtoById.stars;
-    this.Steps = recipeDtoById.steps;
-    this.Tags = recipeDtoById.tags;
-    this.IngredientItems = recipeDtoById.ingredientItems;
+    this.steps = recipeDtoById.steps;
+    this.tags = recipeDtoById.tags;
+    this.ingredientItems = recipeDtoById.ingredientItems;
 
     if (this.currentRecipeDtoStars == 0) this.currentRecipeDtoStars++, this.isFavorite = true;
     else this.currentRecipeDtoStars--, this.isFavorite = false;
@@ -203,9 +145,9 @@ export class RecipesPageComponent implements OnInit {
       this.currentRecipeDtoCookingTime,
       this.currentRecipeDtoLikes,
       this.currentRecipeDtoStars,
-      this.Steps,
-      this.Tags,
-      this.IngredientItems);
+      this.steps,
+      this.tags,
+      this.ingredientItems);
 
     await this._http.put(`/api/Recipe/${recipeId}`, newRecipeDto).toPromise();
     this.recipesDtos = await this._http.get<RecipeDto[]>('/api/Recipe').toPromise();
