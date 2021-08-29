@@ -1,0 +1,367 @@
+.container
+{
+    width: 1200px;
+    margin: 0 auto;
+    margin-bottom: 40px;
+}
+
+.extra-container
+{
+    display: flex; 
+    margin: 0 auto; 
+    width: 1200px; 
+    margin-bottom: 100px;
+}
+
+.ingedient-box
+{
+    width: 380px; 
+    margin-right: 30px;
+}
+
+.ingedient-box__wrapper
+{
+    position: relative;
+}
+
+.input-data_ingredient
+{
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 30px;
+    color: #4A525A;
+
+}
+
+.input-text
+{
+
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 30px;
+    color: #4A525A;
+
+    margin-bottom: 20px;
+    height: 50px;
+    padding-left: 24px;
+    width: 100%;
+    display: block;
+    width: 320px; 
+}
+
+.input-text
+{
+    width: 320px; 
+    padding-top: 11px;
+    height: 229px; 
+}
+
+.step-box__wrapper
+{
+    width: 790px; 
+    background: #FFFFFF;
+    box-shadow: 0px 16px 72px rgba(34, 39, 47, 0.05);
+    border-radius: 24px;
+    margin-bottom: 20px;
+    padding: 50px 70px;
+    position: relative;
+}
+
+.step-box__wrapper
+{
+    width: 790px; background: #FFFFFF;
+    box-shadow: 0px 16px 72px rgba(34, 39, 47, 0.05);
+    border-radius: 24px;
+}
+
+.title-ingredient
+{
+    margin-bottom: 30px;
+    margin-top: 0;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 30px;
+    text-transform: capitalize;
+    color: #4a525a;
+}
+
+.title-step
+{
+    border: 1px solid #fdb100;
+    box-sizing: border-box;
+    border-radius: 16px;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 28px;
+    background: transparent;
+    color: #fdb100;
+    transition: all ease-out 0.25s;
+    width: 380px;
+    height: 62px;
+}
+
+.title
+{
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 30px;
+    display: flex;
+    align-items: center;
+    color: #4A525A;
+    margin-bottom: 21px;
+}
+
+.input-data_step
+{
+
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 30px;
+    color: #4A525A;
+    width: 650px; 
+    margin-bottom: 20px;
+    display: block;
+}
+
+.recipe-title
+{
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 42px;
+    line-height: 62px;
+    color: #25292D;
+    margin: 0;
+}
+
+.function-button
+{
+    margin-top: 20px;
+    cursor: pointer;
+    width: 278px;
+    height: 60px;
+    text-decoration: none;
+    border-color: #FDB100;
+    font: 600 18px/28px "Montserrat";
+    color: #FDB100;
+    border-radius: 16px;
+    border: 1px solid #FDB100;
+    text-align: center;
+    background-color: #FDB100;
+    color: #fff;
+    position: relative;
+    padding-left: 35px;
+}
+
+.function-button::before
+{
+    content: url("../../../assets/Vector.svg");
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    left: 39px;
+}
+
+.back-button
+{
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    color: #FDB100;
+}
+
+.container-title
+{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.container
+{
+    width: 1200px;
+    margin: 0 auto;
+    margin-bottom: 123px;
+}
+
+.recipes-list-container
+{
+    background: #fff;
+    height: 430px;
+    margin-bottom: 40px;
+    transition: all ease-in-out 300ms;
+    box-shadow: 0px 16px 72px rgba(34, 39, 47, 0.05);
+    display: flex;
+    border-radius: 72px 24px 24px 0;
+}
+
+.recipe
+{
+    margin-left: 53px;
+    margin-top: 51px;
+    width: 100%;
+}
+
+.recipe__function
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.recipe__tags
+{
+    display: flex;
+    align-items: center;
+}
+
+.recipe__tag
+{
+    text-decoration: none;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 30px;
+    align-items: center;
+    text-align: center;
+    color: #F29E1F; 
+    background: #FFEFCC;
+    margin-right: 5px;
+    background: rgb(253, 177, 0, 0.2);
+    padding: 0 10px;
+    border-radius: 8px;
+}
+
+.recipe__relation
+{
+    display: flex;
+    margin-right: 30px;
+}
+
+.recipe__button
+{
+    margin-left: 15px;
+    background: none;
+    width: 107px;
+    height: 50px;
+    border: 1px solid #FDB100;
+    box-sizing: border-box;
+    border-radius: 16px;
+    text-decoration: none;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 28px;
+    text-align: center;
+    color: #FDB100;
+    display: block;
+}
+
+.recipe__title
+{
+    margin-bottom: 16px;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 30px;
+    text-transform: capitalize;
+    color: #25292D;
+}
+
+.recipe__description
+{
+    width: 571px;
+    margin-bottom: 43px;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 30px;
+    color: #4A525A;
+}
+
+.recipe__info
+{
+    width: 100%;
+}
+
+.recipe__info,
+.recipe-info__wrapper
+{
+    display: flex;
+}
+
+.info
+{
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 28px;
+    color: #25292D;    
+    opacity: 0.5;
+}
+
+.info-description
+{
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 28px;
+    color: #25292D;
+}
+
+.img
+{
+    margin-right: 20px;
+}
+
+.recipe-info__wrapper
+{
+    margin-right: 71px;
+}
+
+.delete-button
+{
+    cursor: pointer;
+    width: 60px;
+    height: 60px;
+    text-decoration: none;
+    border-color: #9196A1;    
+    font: 600 18px/28px "Montserrat";
+    color: #9196A1;
+    border-radius: 16px;
+    border: 1px solid #9196A1;
+    text-align: center;
+    color: #fff;
+    position: relative;
+}
+
+.delete-button::before
+{
+    content: url("../../../assets/TrashBin.svg");
+    position: absolute;
+    width: 14px;
+    height: 18px;
+    left: 24px;
+    top: 15px;
+}

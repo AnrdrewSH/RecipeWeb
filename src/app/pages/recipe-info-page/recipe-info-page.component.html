@@ -1,0 +1,64 @@
+<div class="container">
+    <div class="container-title">
+        <div>
+            <button mat-button class="back-button" (click)="goBack()">Назад</button>
+            <h1 class="recipe-title">{{currentRecipeDtoName}}</h1>
+        </div>
+        <div class="buttons">
+          <button mat-button (click)="deleteRecipe()" class="delete-button"></button>
+          <button mat-button (click)="goToUpdateRecipe()" class="function-button">Редактировать</button>
+        </div>
+    </div>
+    <div class="recipes-list-container">
+        <img class="img" src="../../../assets/strawberry.png" alt="Клубника">
+        <div class="recipe">
+            <div class="recipe__function">
+                <div class="recipe__tags">
+                    <a *ngFor="let tag of tags" class="recipe__tag" href="#">{{tag.name}}</a>
+                </div>
+                <div class="recipe__relation">
+                    <button mat-button class="recipe__button save">
+                        <img src="../../../assets/fav.svg" style="margin-top: -3px; margin-right: 10px;" alt="fav">
+                        {{currentRecipeDtoLikes}}</button>
+                    <button mat-button class="recipe__button like">
+                        <img src="../../../assets/like.svg" style="margin-right: 10px;" alt="like">
+                        {{currentRecipeDtoStars}}</button>
+                </div>
+            </div>
+            <a style="text-decoration: none; cursor: pointer;">
+                <div class="recipe__description">{{currentRecipeDtoDescription}}</div>
+            </a>
+            <div class="recipe__info">
+                <div class="recipe-info__wrapper">
+                    <img src="../../../assets/clock.svg" class="img" alt="часы">
+                    <div>
+                        <div class="info">Время приготовления</div>
+                        <div class="info-description">{{currentRecipeDtoCookingTime}} минут</div>
+                    </div>
+                </div>
+                <div class="recipe-info__wrapper">
+                    <img src="../../../assets/person.svg" class="img" style="width: 59px;" alt="человек">
+                    <div>
+                        <div class="info">Рецепт на</div>
+                        <div class="info-description">{{currentRecipeDtoPersonNumber}} персон</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="extra-container">
+    <div class="ingedient-box">
+        <h3 class="title-ingredient">Ингридиенты</h3>
+        <div class="ingedient-box__wrapper" *ngFor="let ingredientItem of IngredientItems">
+          <div class="input-data_ingredient">{{ingredientItem.ingredientItemName}}</div>
+          <div class="input-text">{{ingredientItem.products}}</div>
+        </div>
+    </div>
+    <div class="step-box">
+      <div class="step-box__wrapper" *ngFor="let step of Steps">
+          <div class="title">Шаг {{step.StepNumber}}</div>
+          <div class="input-data_step">{{step.stepDescription}}</div>
+      </div>
+    </div>
+</div>

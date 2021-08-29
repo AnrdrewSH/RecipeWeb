@@ -18,14 +18,25 @@
                 <textarea class="input-data-name description" 
                 placeholder="Краткое описание рецепта (150 символов)" 
                 [(ngModel)]="currentRecipeDtoDescription"></textarea>
-                <input class="input-data-name" type="text" placeholder="Добавить теги" [(ngModel)]="currentTagItemName">
+
+                <input class="input-data-name" 
+                type="text" 
+                placeholder="Добавить теги" 
+                [(ngModel)]="currentTagItemName">
+
                 <div class="info-container">
                     <div class="info-container__wrapper">
-                        <input class="input-data-name info" type="number" placeholder="Время готовки" [(ngModel)]="currentRecipeDtoCookingTime">
+                        <input class="input-data-name info" 
+                        type="number" 
+                        placeholder="Время готовки" 
+                        [(ngModel)]="currentRecipeDtoCookingTime">
                         <div class="text">Минут</div>
                     </div>
                     <div class="info-container__wrapper">
-                        <input class="input-data-name info" type="number" placeholder="Порций в блюде" [(ngModel)]="currentRecipeDtoPersonNumber">
+                        <input class="input-data-name info" 
+                        type="number" 
+                        placeholder="Порций в блюде" 
+                        [(ngModel)]="currentRecipeDtoPersonNumber">
                         <div class="text">Персон</div>
                     </div>
                 </div>
@@ -37,8 +48,16 @@
             <h3 class="title-ingredient">Ингридиенты</h3>
             <div class="ingedient-box__wrapper" *ngFor="let ingredientitem of ingredientItems">
                 <form> 
-                    <input class="input-data-ingredient" type="text" style="width: 320px;" placeholder="Заголовок для ингридиентов" [(ngModel)]="currentIngredientItemName">
-                    <textarea class="input-text-ingredient" type="text" placeholder="Список продуктов для категории" [(ngModel)]="currentProductItemName"></textarea>
+                    <input class="input-data-ingredient" 
+                    type="text" 
+                    style="width: 320px;" 
+                    placeholder="Заголовок для ингридиентов" 
+                    [(ngModel)]="currentIngredientItemName">
+
+                    <textarea class="input-text-ingredient" 
+                    type="text" 
+                    placeholder="Список продуктов для категории" 
+                    [(ngModel)]="currentProductItemName"></textarea>
                 </form>
             </div>
             <button class="title-step" (click)="addIngredientItem()">Добавить заголовок</button>

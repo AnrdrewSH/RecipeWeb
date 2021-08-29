@@ -86,7 +86,7 @@ export class RecipesPageComponent implements OnInit {
 
   goToPageByRecipeId(recipeId: number)
   {
-    this.router.navigate(['/change_recipe/:id', {id: recipeId}])
+    this.router.navigate(['/recipe_info/:id', {id: recipeId}])
   }
 
   async updateRecipeForLike(recipeId: number)
