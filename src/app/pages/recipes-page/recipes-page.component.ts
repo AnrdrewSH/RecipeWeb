@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient} from '@angular/common/http';
 import { Router, ActivatedRoute} from '@angular/router';
-import { RecipeDto } from 'src/app/interfaces/RecipeDto';
-import { StepItem } from 'src/app/interfaces/StepItem';
-import { TagItem } from 'src/app/interfaces/TagItem';
-import { IngredientItem } from 'src/app/interfaces/IngredientItem';
-import { ProductItem } from 'src/app/interfaces/ProductItem';
+import { RecipeDto } from 'src/app/Classes/RecipeDto';
+import { StepItem } from 'src/app/Classes/StepItem';
+import { TagItem } from 'src/app/Classes/TagItem';
+import { IngredientItem } from 'src/app/Classes/IngredientItem';
 
 var recipeDtoById: RecipeDto;
 
@@ -39,6 +38,7 @@ export class RecipesPageComponent implements OnInit {
   currentRecipeDtoPersonNumber = 1;
   currentRecipeDtoCookingTime = 1;
   currentRecipeDtoLikes = 0;
+  currentRecipeDtoIsLiked = "../../../assets/like.svg";
   currentRecipeDtoStars = 0;
 
   currentStepItemNumber = 1;
@@ -59,6 +59,8 @@ export class RecipesPageComponent implements OnInit {
   recipeId: number = 0;
 
   searchValue = '';
+  Like: any;
+
   private _http: HttpClient;
 
   constructor(http: HttpClient, private router: Router, private route: ActivatedRoute) {
@@ -69,11 +71,13 @@ export class RecipesPageComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     this.recipesDtos = await this._http.get<RecipeDto[]>('/api/Recipe').toPromise();
-    if (this.currentRecipeDtoLikes == 0) this.isLiked = false;
-    else this.isLiked == true;
-    if (this.currentRecipeDtoStars == 0) this.isFavorite = false;
-    else this.isFavorite == true;
     
+    for (let i = 0; i < this.recipesDtos.length; i++)
+    {
+      if (this.recipesDtos[i].likes == 0) this.recipesDtos[i].isLiked = "../../../assets/like.svg";
+      else this.recipesDtos[i].isLiked = "../../../assets/PushedLike.svg";
+    }
+
   }
 
   openNewRecipe(){
@@ -100,8 +104,8 @@ export class RecipesPageComponent implements OnInit {
     this.tags = recipeDtoById.tags;
     this.ingredientItems = recipeDtoById.ingredientItems;
 
-    if (this.currentRecipeDtoLikes == 0) this.currentRecipeDtoLikes++, this.isLiked = true;
-    else this.currentRecipeDtoLikes--, this.isLiked = false;
+    if (this.currentRecipeDtoLikes == 0) this.currentRecipeDtoLikes++;
+    else this.currentRecipeDtoLikes--;
 
     let newRecipeDto: RecipeDto = new RecipeDto(
       this.currentRecipeDtoId,
@@ -110,6 +114,7 @@ export class RecipesPageComponent implements OnInit {
       this.currentRecipeDtoPersonNumber,
       this.currentRecipeDtoCookingTime,
       this.currentRecipeDtoLikes,
+      this.currentRecipeDtoIsLiked,
       this.currentRecipeDtoStars,
       this.steps,
       this.tags,
@@ -117,6 +122,13 @@ export class RecipesPageComponent implements OnInit {
 
     await this._http.put(`/api/Recipe/${recipeId}`, newRecipeDto).toPromise();
     this.recipesDtos = await this._http.get<RecipeDto[]>('/api/Recipe').toPromise();
+    
+    for (let i = 0; i < this.recipesDtos.length; i++)
+    {
+      if (this.recipesDtos[i].likes == 0) this.recipesDtos[i].isLiked = "../../../assets/like.svg";
+      else this.recipesDtos[i].isLiked = "../../../assets/PushedLike.svg";
+    }
+
   }
 
   async updateRecipeForStars(recipeId: number)
@@ -144,6 +156,7 @@ export class RecipesPageComponent implements OnInit {
       this.currentRecipeDtoPersonNumber,
       this.currentRecipeDtoCookingTime,
       this.currentRecipeDtoLikes,
+      this.currentRecipeDtoIsLiked,
       this.currentRecipeDtoStars,
       this.steps,
       this.tags,
@@ -151,6 +164,13 @@ export class RecipesPageComponent implements OnInit {
 
     await this._http.put(`/api/Recipe/${recipeId}`, newRecipeDto).toPromise();
     this.recipesDtos = await this._http.get<RecipeDto[]>('/api/Recipe').toPromise();
+
+    for (let i = 0; i < this.recipesDtos.length; i++)
+    {
+      if (this.recipesDtos[i].likes == 0) this.recipesDtos[i].isLiked = "../../../assets/like.svg";
+      else this.recipesDtos[i].isLiked = "../../../assets/PushedLike.svg";
+    }
+
   }
 
   async GetRecipesByTag(nameoftag: string)

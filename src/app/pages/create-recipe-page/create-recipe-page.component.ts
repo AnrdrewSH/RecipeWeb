@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { RecipeDto } from 'src/app/interfaces/RecipeDto';
-import { StepItem } from 'src/app/interfaces/StepItem';
-import { TagItem } from 'src/app/interfaces/TagItem';
-import { IngredientItem } from 'src/app/interfaces/IngredientItem';
-import { ProductItem } from 'src/app/interfaces/ProductItem';
+import { RecipeDto } from 'src/app/Classes/RecipeDto';
+import { StepItem } from 'src/app/Classes/StepItem';
+import { TagItem } from 'src/app/Classes/TagItem';
+import { IngredientItem } from 'src/app/Classes/IngredientItem';
+import { ProductItem } from 'src/app/Classes/ProductItem';
 
 @Component({
   selector: 'app-create-recipe-page',
@@ -37,6 +37,7 @@ export class CreateRecipePageComponent implements OnInit {
   currentRecipeDtoPersonNumber = 0;
   currentRecipeDtoCookingTime = 0;
   currentRecipeDtoLikes = 0;
+  currentRecipeDtoIsLiked = "../../../assets/like.svg";
   currentRecipeDtoStars = 0;
 
   recipeDtos: RecipeDto[] = [];
@@ -119,6 +120,7 @@ export class CreateRecipePageComponent implements OnInit {
         this.currentRecipeDtoPersonNumber,
         this.currentRecipeDtoCookingTime,
         this.currentRecipeDtoLikes,
+        this.currentRecipeDtoIsLiked,
         this.currentRecipeDtoStars,
         this.steps,
         this.tags,

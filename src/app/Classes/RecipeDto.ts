@@ -22,6 +22,7 @@ export class RecipeDto {
   public personNumber: number;
   public cookingTime: number;
   public likes: number;
+  public isLiked: string = "../../../assets/like.svg";
   public stars: number;
   public steps: StepItem[];
   public tags: TagItem[];
@@ -34,6 +35,7 @@ export class RecipeDto {
     personNumber: number,
     cookingTime: number,
     likes: number,
+    isLiked: string,
     stars: number,
     steps: StepItem[],
     tags: TagItem[],
@@ -45,6 +47,7 @@ export class RecipeDto {
     this.personNumber = personNumber;
     this.cookingTime = cookingTime;
     this.likes = likes;
+    this.isLiked = isLiked;
     this.stars = stars;
     this.steps = steps;
     this.tags = tags;

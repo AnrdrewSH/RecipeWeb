@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
-import { RecipeDto } from 'src/app/interfaces/RecipeDto';
-import { StepItem } from 'src/app/interfaces/StepItem';
-import { TagItem } from 'src/app/interfaces/TagItem';
-import { IngredientItem } from 'src/app/interfaces/IngredientItem';
-import { ProductItem } from 'src/app/interfaces/ProductItem';
+import { RecipeDto } from 'src/app/Classes/RecipeDto';
+import { StepItem } from 'src/app/Classes/StepItem';
+import { TagItem } from 'src/app/Classes/TagItem';
+import { IngredientItem } from 'src/app/Classes/IngredientItem';
+import { ProductItem } from 'src/app/Classes/ProductItem';
 
 var recipeDtoById: RecipeDto;
 
@@ -31,6 +31,7 @@ export class ChangeRecipePageComponent implements OnInit {
   currentRecipeDtoCookingTime = 1;
   currentRecipeDtoLikes = 0;
   currentRecipeDtoStars = 0;
+  currentRecipeDtoIsLiked = "../../../assets/like.svg";
 
   currentStepItemNumber = 1;
   currentStepItemName = '';
@@ -59,13 +60,17 @@ export class ChangeRecipePageComponent implements OnInit {
     this.currentRecipeDtoDescription = recipeDtoById.recipeDescription;
     this.currentRecipeDtoPersonNumber = recipeDtoById.personNumber;
     this.currentRecipeDtoCookingTime = recipeDtoById.cookingTime;
+    this.currentRecipeDtoLikes = recipeDtoById.likes;
+    this.currentRecipeDtoStars = recipeDtoById.stars;
     this.steps = recipeDtoById.steps;
     this.tags = recipeDtoById.tags;
     this.ingredientItems = recipeDtoById.ingredientItems;
+
     for (let i = 0; i < this.steps.length; i++)
     {
       this.steps[i].StepNumber = i + 1;
     }
+
   }
   
   async updateRecipe(recipe: RecipeDto)
@@ -96,6 +101,7 @@ export class ChangeRecipePageComponent implements OnInit {
     this.tags = [];
     let i = 0;
     this.StringTags = this.currentTagItemName.split(this.space);
+
     while (i < this.StringTags.length) { 
       this.currentTagItemName = this.StringTags[i];
       let newTag: TagItem = new TagItem(this.currentTagItemName);
@@ -109,12 +115,14 @@ export class ChangeRecipePageComponent implements OnInit {
   async addIngredientItem() {
     let i = 0;
     this.StringProducts = this.currentProductItemName.split(this.enter);
+
     while (i < this.StringProducts.length - 1) { 
       this.currentProductItemName = this.StringProducts[i];
       let newProductItem: ProductItem = new ProductItem(this.currentProductItemName);
       this.Products.push( newProductItem );
       i++;
     }
+    
     let newIngredientItem: IngredientItem = new IngredientItem(this.currentIngredientItemName, this.Products)
     this.ingredientItems.push(newIngredientItem)
   }
@@ -129,6 +137,7 @@ export class ChangeRecipePageComponent implements OnInit {
     this.currentRecipeDtoPersonNumber,
     this.currentRecipeDtoCookingTime,
     this.currentRecipeDtoLikes,
+    this.currentRecipeDtoIsLiked,
     this.currentRecipeDtoStars,
     this.steps,
     this.tags,

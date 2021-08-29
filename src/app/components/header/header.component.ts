@@ -13,8 +13,13 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
   openRecipes() {
     this.router.navigate(['/']);
+  }
+
+  favoritesRecipes() {
+    this.router.navigate(['/favorites_recipes']);
   }
 
 }

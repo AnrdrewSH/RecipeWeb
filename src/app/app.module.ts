@@ -19,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { ChangeRecipePageComponent } from './pages/change-recipe-page/change-recipe-page.component';
+import { FavoritesRecipePageComponent } from './pages/favorites-recipe-page/favorites-recipe-page.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { ChangeRecipePageComponent } from './pages/change-recipe-page/change-rec
     CreateRecipePageComponent,
     DialogOptionsComponent,
     ChangeRecipePageComponent,
+    FavoritesRecipePageComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,366 @@
+.title-container
+{
+    margin: 0 auto;
+    width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.page-title
+{
+    margin: 0;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 42px;
+    line-height: 62px;
+    color: #25292D;
+}
+
+.favorite-content
+{
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 30px;
+    text-align: center;  
+    color: #FDB100;
+    opacity: 0.5;
+    height: 1035px; 
+    padding-top: 117px;
+}
+
+app-smart-nav .tags__text
+{
+    display: none;
+}
+
+.container
+{
+    width: 1200px;
+    margin: 0 auto;
+    margin-bottom: 123px;
+}
+
+.title-container
+{
+    margin: 0 auto;
+    width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 52px;
+}
+
+.page-title
+{
+    margin: 0;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 42px;
+    line-height: 62px;
+    color: #25292D;
+}
+
+.function-button
+{
+    cursor: pointer;
+    width: 278px;
+    height: 60px;
+    text-decoration: none;
+    border-color: #FDB100;
+    font: 600 18px/28px "Montserrat";
+    color: #FDB100;
+    border-radius: 16px;
+    border: 1px solid #FDB100;
+    text-align: center;
+    background-color: #FDB100;
+    color: #fff;
+    position: relative;
+    padding-left: 35px;
+}
+
+.function-button::before
+{
+    content: url("../../../assets/plus.svg");
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    left: 39px;
+}
+
+.container
+{
+    width: 1200px;
+    margin: 0 auto;
+    margin-bottom: 123px;
+}
+
+.recipes-list-container
+{
+    background: #fff;
+    height: 430px;
+    margin-bottom: 40px;
+    transition: all ease-in-out 300ms;
+    box-shadow: 0px 16px 72px rgba(34, 39, 47, 0.05);
+    display: flex;
+    border-radius: 72px 24px 24px 0;
+}
+
+.recipe
+{
+    margin-left: 53px;
+    margin-top: 51px;
+    width: 100%;
+}
+
+.recipe__function
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.recipe__tags
+{
+    display: flex;
+    align-items: center;
+}
+
+.recipe__tag
+{
+    text-decoration: none;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 30px;
+    align-items: center;
+    text-align: center;
+    color: #F29E1F; 
+    background: #FFEFCC;
+    margin-right: 5px;
+    background: rgb(253, 177, 0, 0.2);
+    padding: 0 10px;
+    border-radius: 8px;
+}
+
+.recipe__relation
+{
+    display: flex;
+    margin-right: 30px;
+}
+
+.recipe__button
+{
+    margin-left: 15px;
+    background: none;
+    width: 107px;
+    height: 50px;
+    border: 1px solid #FDB100;
+    box-sizing: border-box;
+    border-radius: 16px;
+    text-decoration: none;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 28px;
+    text-align: center;
+    color: #FDB100;
+    display: block;
+}
+
+.recipe__title
+{
+    margin-bottom: 16px;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 30px;
+    text-transform: capitalize;
+    color: #25292D;
+}
+
+.recipe__description
+{
+    width: 571px;
+    margin-bottom: 43px;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 30px;
+    color: #4A525A;
+}
+
+.recipe__info
+{
+    width: 100%;
+}
+
+.recipe__info,
+.recipe-info__wrapper
+{
+    display: flex;
+}
+
+.info
+{
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 28px;
+    color: #25292D;    
+    opacity: 0.5;
+}
+
+.info-description
+{
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 28px;
+    color: #25292D;
+}
+
+.img
+{
+    margin-right: 20px;
+}
+
+.recipe-info__wrapper-tags
+{
+    margin-right: 71px;
+}
+
+.page-wrapper
+{
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    justify-content: space-between;
+    width: 1200px;
+    margin-bottom: 80px;
+}
+
+.page-wrapper__title
+{
+    margin-top: -50px;
+    color: #25292D;
+    font: bold 24px/30px "Montserrat";
+}
+
+.search-container__search
+{
+    display: flex; 
+    justify-content: center; 
+    margin-bottom: 40px;
+}
+
+.search-container__input
+{
+    height: 73px;
+    width: 716px;
+    border-radius: 16px;
+    background: #FFFFFF;
+    box-shadow: 0px 8px 42px rgba(34, 39, 47, 0.04);
+    font: 400 18px/22px "Montserrat";
+    border-style: none;
+    outline: none;
+    padding-left: 32px;
+    margin-right: 16px;
+}
+
+.search-container__submit
+{
+    cursor: pointer;
+    width: 152px;
+    height: 73px;
+    border-radius: 16px;
+    background: #FDB100;
+    color: #fff;
+    border-style: none;
+    outline: none;
+    font: 600 18px/22px "Montserrat";
+}
+
+.search-container__nav
+{
+    display: flex; 
+    justify-content: left; 
+    width: 884px; 
+    margin: 0 auto;
+}
+
+.nav-container__link
+{
+
+    text-align: center;
+    margin-left: 5px;
+    margin-right: 20px;
+    width: 100px;
+    display: inline-block;
+    font: 400 18px/22px "Montserrat";
+    text-decoration: none;
+    color: #9196a1;
+    transition: .15s all;
+}
+
+.nav-container__link:hover
+{
+    font-weight: 600;
+    color: #3a3c41;
+    transition: .15s all;
+}
+
+.nav-section
+{
+    margin: 0 auto;
+    width: 1200px;
+}
+
+.nav-section__tags
+{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+}
+
+.tags
+{
+    width: 278px;
+    text-decoration: none;
+    background: #ffffff;
+    color: #25292D;
+    box-shadow: 0px 16px 72px rgb(34 39 47 / 5%);
+    border-radius: 24px;
+    cursor: pointer;
+    transition: all ease-in-out 250ms;
+    margin-right: 30px;
+    padding: 24px;
+}
+
+.tags:last-child
+{
+    margin-right: 0;
+}
+
+.tags__title
+{
+    color: #25292D;
+    margin: 24px 0 12px 0;
+}
+
+.tags__text
+{
+    font: normal 18px/30px "Montserrat";
+    color: #4a525a;
+}
