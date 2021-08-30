@@ -45,7 +45,6 @@ export class RecipesPageComponent implements OnInit {
   currentStepItemName = '';
   steps: StepItem[] = [];
 
-  space = ' ';
   currentTagItemName = '';
   tags: TagItem[] = [];
   StringTags: string[] =[];
@@ -59,7 +58,6 @@ export class RecipesPageComponent implements OnInit {
   recipeId: number = 0;
 
   searchValue = '';
-  Like: any;
 
   private _http: HttpClient;
 
@@ -77,7 +75,6 @@ export class RecipesPageComponent implements OnInit {
       if (this.recipesDtos[i].likes == 0) this.recipesDtos[i].isLiked = "../../../assets/like.svg";
       else this.recipesDtos[i].isLiked = "../../../assets/PushedLike.svg";
     }
-
   }
 
   openNewRecipe(){
@@ -128,7 +125,6 @@ export class RecipesPageComponent implements OnInit {
       if (this.recipesDtos[i].likes == 0) this.recipesDtos[i].isLiked = "../../../assets/like.svg";
       else this.recipesDtos[i].isLiked = "../../../assets/PushedLike.svg";
     }
-
   }
 
   async updateRecipeForStars(recipeId: number)
@@ -170,7 +166,6 @@ export class RecipesPageComponent implements OnInit {
       if (this.recipesDtos[i].likes == 0) this.recipesDtos[i].isLiked = "../../../assets/like.svg";
       else this.recipesDtos[i].isLiked = "../../../assets/PushedLike.svg";
     }
-
   }
 
   async GetRecipesByTag(nameoftag: string)

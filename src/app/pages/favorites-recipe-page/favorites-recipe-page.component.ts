@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import { RecipeDto } from 'src/app/Classes/RecipeDto';
-import { StepItem } from 'src/app/Classes/StepItem';
 import { TagItem } from 'src/app/Classes/TagItem';
-import { IngredientItem } from 'src/app/Classes/IngredientItem';
 
 @Component({
   selector: 'app-favorites-recipe-page',

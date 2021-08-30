@@ -37,14 +37,12 @@ export class RecipeInfoPageComponent implements OnInit {
 
   currentStepItemNumber = 1;
   currentStepItemName = '';
-  Steps: StepItem[] = [];
+  steps: StepItem[] = [];
 
-  space = ' ';
   currentTagItemName = '';
   Tags: TagItem[] = [];
   StringTags: string[] =[];
 
-  enter = '\n'
   StringProducts: string[] = []
   currentIngredientItemName = '';
   currentProductItemName = '';
@@ -57,7 +55,6 @@ export class RecipeInfoPageComponent implements OnInit {
   {
     this.currentRecipeDtoId = Number(this.route.snapshot.paramMap.get('id'));
     recipeDtoById = await this._http.get<RecipeDto>('/api/Recipe/' + this.currentRecipeDtoId).toPromise();
-    this.recipeDtosById.push(recipeDtoById);
     this.currentRecipeDtoName = recipeDtoById.recipeName;
     this.currentRecipeDtoDescription = recipeDtoById.recipeDescription;
     this.currentRecipeDtoPersonNumber = recipeDtoById.personNumber;
@@ -68,13 +65,23 @@ export class RecipeInfoPageComponent implements OnInit {
     {
       let newStepNumber = i + 1;
       let newStep: StepItem = new StepItem(recipeDtoById.steps[i].stepDescription, newStepNumber)
-      this.Steps.push(newStep);
+      this.steps.push(newStep);
     }
     this.Tags = recipeDtoById.tags;
     this.IngredientItems = recipeDtoById.ingredientItems;
-
+    // let newRecipeDto: RecipeDto = new RecipeDto(this.currentRecipeDtoId, 
+    //   this.currentRecipeDtoName, 
+    //   this.currentRecipeDtoDescription,
+    //   this.currentRecipeDtoPersonNumber,
+    //   this.currentRecipeDtoCookingTime,
+    //   this.currentRecipeDtoLikes,
+    //   this.currentRecipeDtoIsLiked,
+    //   this.currentRecipeDtoStars,
+    //   this.steps,
+    //   this.Tags,
+    //   this.IngredientItems)
     
-    console.log(this.Steps);
+    console.log(this.steps);
   }
   
   async goBack()

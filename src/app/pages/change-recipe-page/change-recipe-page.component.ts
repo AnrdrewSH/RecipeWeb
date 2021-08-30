@@ -37,17 +37,17 @@ export class ChangeRecipePageComponent implements OnInit {
   currentStepItemName = '';
   steps: StepItem[] = [];
 
-  space = ' ';
   currentTagItemName = '';
   tags: TagItem[] = [];
   StringTags: string[] =[];
 
-  enter = '\n'
   StringProducts: string[] = []
   currentIngredientItemName = '';
   currentProductItemName = '';
   Products: ProductItem[] = [];
   ingredientItems: IngredientItem[] = [];
+  joinProducts = '';
+  newProducts: ProductItem[] = [];
 
   currentRecipeDtoId = 0;
 
@@ -71,6 +71,18 @@ export class ChangeRecipePageComponent implements OnInit {
       this.steps[i].StepNumber = i + 1;
     }
 
+    let counter = this.ingredientItems.length;
+
+    for (let i = 0; i < counter; i++)
+    {
+      this.StringProducts[i] = this.ingredientItems[i].products.join('\n');
+      let newProduct: ProductItem = new ProductItem(this.StringProducts[i]);
+      this.newProducts.push(newProduct);
+      let newIngredientItem: IngredientItem = new IngredientItem(this.ingredientItems[i].ingredientItemName, this.newProducts)
+      this.ingredientItems.push(newIngredientItem);
+      this.ingredientItems.splice(0, 1);
+    }
+    console.log(this.ingredientItems);
   }
   
   async updateRecipe(recipe: RecipeDto)
@@ -100,7 +112,7 @@ export class ChangeRecipePageComponent implements OnInit {
   async addTagItem() {
     this.tags = [];
     let i = 0;
-    this.StringTags = this.currentTagItemName.split(this.space);
+    this.StringTags = this.currentTagItemName.split(' ');
 
     while (i < this.StringTags.length) { 
       this.currentTagItemName = this.StringTags[i];
@@ -114,7 +126,7 @@ export class ChangeRecipePageComponent implements OnInit {
 
   async addIngredientItem() {
     let i = 0;
-    this.StringProducts = this.currentProductItemName.split(this.enter);
+    this.StringProducts = this.currentProductItemName.split('\n');
 
     while (i < this.StringProducts.length - 1) { 
       this.currentProductItemName = this.StringProducts[i];
@@ -122,7 +134,7 @@ export class ChangeRecipePageComponent implements OnInit {
       this.Products.push( newProductItem );
       i++;
     }
-    
+
     let newIngredientItem: IngredientItem = new IngredientItem(this.currentIngredientItemName, this.Products)
     this.ingredientItems.push(newIngredientItem)
   }

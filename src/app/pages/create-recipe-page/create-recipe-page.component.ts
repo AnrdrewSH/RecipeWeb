@@ -19,12 +19,10 @@ export class CreateRecipePageComponent implements OnInit {
   currentStepItemName = '';
   steps: StepItem[];
   
-  space = ' ';
   currentTagItemName = '';
   tags: TagItem[] = [];
   StringTags: string[] =[];
 
-  enter = '\n'
   StringProducts: string[] = []
   currentIngredientItemName = '';
   currentProductItemName = '';
@@ -77,7 +75,7 @@ export class CreateRecipePageComponent implements OnInit {
 
   async addTagItem() {
     let i = 0;
-    this.StringTags = this.currentTagItemName.split(this.space);
+    this.StringTags = this.currentTagItemName.split(' ');
     while (i < this.StringTags.length) { 
       this.currentTagItemName = this.StringTags[i];
       let newTag: TagItem = new TagItem(this.currentTagItemName);
@@ -89,7 +87,7 @@ export class CreateRecipePageComponent implements OnInit {
   async addIngredientItem() {
     let i = 0;
     this.Products = [];
-    this.StringProducts = this.currentProductItemName.split(this.enter);
+    this.StringProducts = this.currentProductItemName.split('\n');
     while (i < this.StringProducts.length) { 
       this.currentProductItemName = this.StringProducts[i];
       let newProductItem: ProductItem = new ProductItem(this.currentProductItemName);
